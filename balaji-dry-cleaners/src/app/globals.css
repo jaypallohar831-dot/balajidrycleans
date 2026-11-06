@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4 design-system tokens ────────────────── */
+@theme inline {
+  /* ─ Primary sky-blue palette ─ */
+  --color-primary-50: #EBF6FE;
+  --color-primary-100: #D2ECFD;
+  --color-primary-200: #A5D8FB;
+  --color-primary-300: #6EC0F8;
+  --color-primary-400: #38A8F5;
+  --color-primary-500: #1B96E6;
+  --color-primary-600: #1278BF;
+  --color-primary-700: #0E5E99;
+  --color-primary-800: #0B4573;
+  --color-primary-900: #0B2540;
+
+  /* ─ Light sky tints for backgrounds ─ */
+  --color-sky-light: #F0F8FF;
+  --color-sky-lighter: #F7FBFF;
+
+  /* ─ Navy for text / dark buttons ─ */
+  --color-navy: #0B2540;
+  --color-navy-light: #163A5C;
+
+  /* ─ Neutral palette ─ */
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F8FAFC;
+  --color-border: #E2E8F0;
+  --color-text: #0B2540;
+  --color-text-muted: #64748B;
+
+  /* ─ Typography (Plus Jakarta Sans via next/font) ─ */
+  --font-sans: var(--font-jakarta);
+
+  /* ─ Spacing & radius ─ */
+  --radius-card: 24px;
+  --radius-pill: 9999px;
+
+  /* ─ Shadows ─ */
+  --shadow-soft: 0 2px 16px 0 rgba(56, 168, 245, 0.08);
+  --shadow-card: 0 4px 24px 0 rgba(11, 37, 64, 0.06);
+  --shadow-elevated: 0 8px 40px 0 rgba(11, 37, 64, 0.10);
+
+  /* ─ Container ─ */
+  --container-max: 1200px;
+}
+
+/* ── Base styles ─────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom text selection ───────────────────────────── */
+::selection {
+  background: var(--color-primary-200);
+  color: var(--color-navy);
+}
+
+::-moz-selection {
+  background: var(--color-primary-200);
+  color: var(--color-navy);
+}
+
+/* ── Container utility ───────────────────────────────── */
+.container-site {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-site {
+    padding-inline: 2rem;
+  }
+}
+
+/* ── Section spacing ─────────────────────────────────── */
+.section-padding {
+  padding-block: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-block: 6.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-block: 8rem;
+  }
+}
+
+/* ── Glass card utility ──────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid rgba(226, 232, 240, 0.50);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Button: Primary dark pill ───────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1;
+  color: #FFFFFF;
+  background: var(--color-navy);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--color-navy-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-elevated);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ── Button: Secondary outline pill ──────────────────── */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1;
+  color: var(--color-navy);
+  background: transparent;
+  border: 2px solid var(--color-primary-400);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary-50);
+  color: var(--color-primary-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}

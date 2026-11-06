@@ -1,0 +1,11 @@
+{
+  "name": "balaji-dry-cleaners-root",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix balaji-dry-cleaners run dev",
+    "build": "npm --prefix balaji-dry-cleaners run build",
+    "start": "npm --prefix balaji-dry-cleaners run start",
+    "lint": "npm --prefix balaji-dry-cleaners run lint"
+  }
+}
