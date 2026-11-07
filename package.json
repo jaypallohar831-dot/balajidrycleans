@@ -2,6 +2,9 @@
   "name": "balaji-dry-cleaners-root",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "balaji-dry-cleaners"
+  ],
   "scripts": {
     "dev": "npm --prefix balaji-dry-cleaners run dev",
     "build": "npm --prefix balaji-dry-cleaners run build",
