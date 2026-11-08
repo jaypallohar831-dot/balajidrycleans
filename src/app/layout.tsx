@@ -92,6 +92,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: baseUrl,
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
+  },
   other: {
     "geo.region": "IN-RJ",
     "geo.placename": "Bhilwara",

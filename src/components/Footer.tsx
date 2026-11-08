@@ -29,6 +29,7 @@ const FOOTER_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Our Work", href: "/work" },
   { label: "Process", href: "#process" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 

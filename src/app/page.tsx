@@ -5,6 +5,7 @@ import { WorkTeaser } from "@/components/WorkTeaser";
 import { WinterBanner } from "@/components/WinterBanner";
 import { Process } from "@/components/Process";
 import { PickupBooking } from "@/components/PickupBooking";
+import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -32,10 +33,13 @@ export default function Home() {
       {/* 7. Pickup Booking Section (#pickup) */}
       <PickupBooking />
 
-      {/* 8. Contact Section (#contact: 3 info blocks + Google Maps) */}
+      {/* 8. Frequently Asked Questions Section (#faq for Google Rich Snippets) */}
+      <FAQ />
+
+      {/* 9. Contact Section (#contact: 3 info blocks + Google Maps) */}
       <Contact />
 
-      {/* 9. Footer */}
+      {/* 10. Footer */}
       <Footer />
     </main>
   );

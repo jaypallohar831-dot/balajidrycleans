@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { label: "Services", href: "#services" },
   { label: "Our Work", href: "/work" },
   { label: "Process", href: "#process" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -41,7 +42,7 @@ export function Navbar() {
       return;
     }
 
-    const sectionIds = ["home", "about", "services", "process", "contact"];
+    const sectionIds = ["home", "about", "services", "process", "faq", "contact"];
 
     const handleScrollSpy = () => {
       const scrollPosition = window.scrollY + 120; // Offset for top floating bar
