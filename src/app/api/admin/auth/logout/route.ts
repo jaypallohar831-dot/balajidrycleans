@@ -3,7 +3,7 @@ import { ADMIN_COOKIE_NAME } from "@/lib/auth";
 import { ok } from "@/lib/response";
 
 export async function POST() {
-  const res = ok({ message: "Logout ho gaya hai." }, 200);
+  const res = ok({ message: "Logged out successfully." }, 200);
 
   res.cookies.set({
     name: ADMIN_COOKIE_NAME,

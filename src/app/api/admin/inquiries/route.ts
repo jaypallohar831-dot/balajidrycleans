@@ -12,7 +12,7 @@ import { ok, fail } from "@/lib/response";
 export async function GET(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   const { searchParams } = request.nextUrl;
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
         id: "mock-i-1",
         name: "Priya Sharma",
         phone: "+919876543210",
-        message: "Silk saree par haldi ka ziddi daag hai, safely saaf ho jayega kya?",
+        message: "There is a stubborn turmeric stain on my silk saree, can it be safely removed?",
         status: "new",
         source: "website",
         created_at: new Date(Date.now() - 40 * 60 * 1000).toISOString(),
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
         id: "mock-i-2",
         name: "Ramesh Chand",
         phone: "+919829011223",
-        message: "Bhilwara bypass par pickup service available hai kya?",
+        message: "Is doorstep pickup service available near Bhilwara bypass?",
         status: "contacted",
         source: "website",
         created_at: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
         id: "mock-i-3",
         name: "Kavita Lodha",
         phone: "+919829033445",
-        message: "Wedding sherwani steam press charges batayein.",
+        message: "Please quote steam press and dry cleaning charges for wedding sherwani.",
         status: "closed",
         source: "website",
         created_at: new Date(Date.now() - 24 * 3600 * 1000).toISOString(),
@@ -121,6 +121,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (err: any) {
     console.error("[AdminInquiries:EXCEPTION]", err);
-    return fail("SERVER_ERROR", "Inquiries fetch karne mein samasya aayi.", 500);
+    return fail("SERVER_ERROR", "Failed to retrieve customer inquiries.", 500);
   }
 }

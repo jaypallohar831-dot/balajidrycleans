@@ -15,12 +15,12 @@ export async function PATCH(
 ) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   const { id } = await params;
   if (!id) {
-    return fail("VALIDATION_ERROR", "Booking ID zaroori hai.", 422);
+    return fail("VALIDATION_ERROR", "Booking ID is required.", 422);
   }
 
   const body = await request.json();
@@ -35,7 +35,7 @@ export async function PATCH(
   ];
 
   if (status && !validStatuses.includes(status)) {
-    return fail("VALIDATION_ERROR", `Amanay status: ${status}`, 422);
+    return fail("VALIDATION_ERROR", `Invalid status: ${status}`, 422);
   }
 
   const isMock =
@@ -47,7 +47,7 @@ export async function PATCH(
       id,
       status: status || "confirmed",
       notes: notes || null,
-      message: "Booking status update ho gaya!",
+      message: "Booking status updated successfully!",
     });
   }
 
@@ -62,7 +62,7 @@ export async function PATCH(
       .single();
 
     if (fetchErr || !existing) {
-      return fail("NOT_FOUND", "Booking nahi mili.", 404);
+      return fail("NOT_FOUND", "Booking not found.", 404);
     }
 
     const fromStatus = existing.status;
@@ -98,7 +98,7 @@ export async function PATCH(
     return ok(updated);
   } catch (err: any) {
     console.error("[UpdateBooking:EXCEPTION]", err);
-    return fail("SERVER_ERROR", "Booking update karne mein samasya aayi.", 500);
+    return fail("SERVER_ERROR", "Failed to update booking.", 500);
   }
 }
 
@@ -113,11 +113,11 @@ export async function GET(
 ) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   const { id } = await params;
-  if (!id) return fail("VALIDATION_ERROR", "ID zaroori hai.", 422);
+  if (!id) return fail("VALIDATION_ERROR", "ID is required.", 422);
 
   const isMock =
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -141,7 +141,7 @@ export async function GET(
           id: "hist-1",
           from_status: null,
           to_status: "pending",
-          note: "Website se nayi booking",
+          note: "New booking via website",
           changed_by: "system",
           created_at: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
         },
@@ -158,7 +158,7 @@ export async function GET(
       .single();
 
     if (bErr || !booking) {
-      return fail("NOT_FOUND", "Booking nahi mili.", 404);
+      return fail("NOT_FOUND", "Booking not found.", 404);
     }
 
     const { data: history } = await db
@@ -173,6 +173,6 @@ export async function GET(
     });
   } catch (err: any) {
     console.error("[GetBooking:EXCEPTION]", err);
-    return fail("SERVER_ERROR", "Booking fetch karne mein samasya aayi.", 500);
+    return fail("SERVER_ERROR", "Failed to fetch booking details.", 500);
   }
 }

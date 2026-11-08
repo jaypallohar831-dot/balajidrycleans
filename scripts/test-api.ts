@@ -155,8 +155,8 @@ async function runTests() {
       "Short name error code is VALIDATION_ERROR"
     );
     assert(
-      json.error?.message.includes("Naam kam se kam 2 akshar"),
-      "Short name message is in Hinglish"
+      json.error?.message.includes("Name must be at least 2"),
+      "Short name message is in English"
     );
   }
 
@@ -352,8 +352,8 @@ async function runTests() {
 
     assert(res.status === 422, "Invalid service returns status 422");
     assert(
-      json.error?.message.includes("service select karein"),
-      "Invalid service error message is in Hinglish"
+      json.error?.message.toLowerCase().includes("valid service"),
+      "Invalid service error message is in English"
     );
   }
 
@@ -381,8 +381,8 @@ async function runTests() {
 
     assert(res.status === 422, "Invalid pickupSlot returns status 422");
     assert(
-      json.error?.message.includes("Pickup time"),
-      "Invalid pickupSlot message is in Hinglish"
+      json.error?.message.toLowerCase().includes("pickup time"),
+      "Invalid pickupSlot message is in English"
     );
   }
 
@@ -464,8 +464,8 @@ async function runTests() {
 
     assert(res.status === 422, "Short address returns status 422");
     assert(
-      json.error?.message.includes("Address kam se kam 10"),
-      "Short address error message is in Hinglish"
+      json.error?.message.includes("Address must be at least 10"),
+      "Short address error message is in English"
     );
   }
 

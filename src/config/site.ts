@@ -3,6 +3,7 @@ export const siteConfig = {
   tagline: "Premium Dry Cleaning & Laundry Services",
   description:
     "Bhilwara's trusted dry cleaning experts — delivering spotless garments with care since day one.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://balajidrycleans.vercel.app",
 
   // Contact
   whatsapp: "918005817455",
@@ -46,49 +47,49 @@ export const siteConfig = {
       id: "suit-blazer-sherwani",
       title: "Suit / Blazer / Sherwani",
       description:
-        "Formal aur wedding wear ki delicate solvent cleaning aur crisp steam finish.",
+        "Delicate solvent dry cleaning and crisp Italian steam press for formal and wedding wear.",
       icon: "Shirt" as const,
-      inquiry: "Namaste Balaji Dry Cleaners! Mujhe Suit / Blazer / Sherwani dry clean karwana hai.",
+      inquiry: "Hello Balaji Dry Cleaners! I would like to inquire about dry cleaning for Suit / Blazer / Sherwani.",
     },
     {
       id: "saree-lehenga-ghagra",
-      title: "Saree / Lehenga / Ghagra Choli",
+      title: "Saree / Lehenga / Designer Wear",
       description:
-        "Silk, zari aur gota-patti wale designer kapdo ki gentle, safe dry cleaning.",
+        "Gentle, color-safe dry cleaning specialized for pure silk, zari, and gota-patti designer outfits.",
       icon: "Crown" as const,
-      inquiry: "Namaste Balaji Dry Cleaners! Mujhe Saree / Lehenga dry clean karwana hai.",
+      inquiry: "Hello Balaji Dry Cleaners! I would like to inquire about dry cleaning for Saree / Lehenga.",
     },
     {
       id: "sweater-jacket-shawl",
       title: "Sweater / Jacket / Shawl",
       description:
-        "Woolen aur leather garments ki bina shrink hue soft lint-free restoration.",
+        "Zero-shrinkage restoration, lint removal, and soft conditioning for woolens and leather jackets.",
       icon: "Layers" as const,
-      inquiry: "Namaste Balaji Dry Cleaners! Mujhe Winter wear (Sweater/Jacket/Shawl) clean karwana hai.",
+      inquiry: "Hello Balaji Dry Cleaners! I would like to inquire about winter garment care (Sweater/Jacket/Shawl).",
     },
     {
       id: "rajai-kambal-parde",
-      title: "Rajai / Kambal / Parde",
+      title: "Blankets / Quilts / Curtains",
       description:
-        "Heavy blankets, quilts aur curtains ki deep germ-free hygiene wash aur packaging.",
+        "Deep anti-bacterial hygiene wash, steam sanitization, and vacuum packaging for heavy bedding and drapery.",
       icon: "Home" as const,
-      inquiry: "Namaste Balaji Dry Cleaners! Mujhe Rajai / Kambal / Parde wash karwane hain.",
+      inquiry: "Hello Balaji Dry Cleaners! I would like to schedule a wash for Blankets / Quilts / Curtains.",
     },
     {
       id: "daily-wash-iron",
-      title: "Daily Wash and Iron",
+      title: "Daily Wash & Steam Iron",
       description:
-        "Rojana ke shirts, kurtas aur trousers ki fresh laundry aur wrinkle-free press.",
+        "Premium everyday laundry wash with crisp, wrinkle-free steam ironing for shirts and trousers.",
       icon: "WashingMachine" as const,
-      inquiry: "Namaste Balaji Dry Cleaners! Mujhe Daily Wash and Iron service chahiye.",
+      inquiry: "Hello Balaji Dry Cleaners! I need information about your Daily Wash & Steam Iron service.",
     },
     {
       id: "stain-removal",
-      title: "Stain Removal (Haldi, Tel, Chai, Ink)",
+      title: "Targeted Stain Removal",
       description:
-        "Ziddi se ziddi daag-dhabbo par specialised treatment, kapde ke rang ko bachate hue.",
+        "Advanced spotting treatment for tough stains (oil, turmeric, coffee, ink) while preserving fabric colors.",
       icon: "Sparkles" as const,
-      inquiry: "Namaste Balaji Dry Cleaners! Mujhe ziddi daag (Haldi/Chai/Tel/Ink) hatwane hain.",
+      inquiry: "Hello Balaji Dry Cleaners! I need expert stain removal assistance for my garment.",
     },
   ],
 
@@ -96,30 +97,30 @@ export const siteConfig = {
   process: [
     {
       step: 1,
-      title: "Pickup ya Drop",
+      title: "Doorstep Pickup or Drop-off",
       description:
-        "Shop par drop karein ya WhatsApp par message bhejkar convenient home pickup book karein.",
+        "Drop your clothes at our store in RK Colony or schedule a convenient doorstep pickup.",
       icon: "Truck" as const,
     },
     {
       step: 2,
-      title: "Tag aur Inspect",
+      title: "Inspection & Fabric Tagging",
       description:
-        "Har kapde ki fabric, buttons aur ziddi daag ko detail se inspect aur tag kiya jata hai.",
+        "Each garment is carefully inspected for delicate fabrics, embroidery, and specific stain treatment.",
       icon: "Search" as const,
     },
     {
       step: 3,
-      title: "Clean aur Press",
+      title: "Eco-Clean & Industrial Steam Press",
       description:
-        "Eco-friendly solvent se deep clean aur industrial steam press se wrinkle-free crisp finish.",
+        "Cleaned with gentle eco-friendly solvents and pressed on Italian steam mannequins for a showroom finish.",
       icon: "Sparkles" as const,
     },
     {
       step: 4,
-      title: "Ghar tak Delivery",
+      title: "Hanger Packaging & Delivery",
       description:
-        "Dust-free protective cover aur hanger packaging ke sath timely handover ya delivery.",
+        "Delivered directly to your doorstep in breathable, dust-free protective covers ready to wear.",
       icon: "PackageCheck" as const,
     },
   ],

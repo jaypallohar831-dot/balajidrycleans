@@ -38,18 +38,18 @@ export async function notifyNewBooking(data: BookingNotificationData): Promise<v
   const ownerEmail = process.env.OWNER_EMAIL;
   const cleanCustomerPhone = data.phone.replace(/[^0-9]/g, "");
   const waReplyLink = `https://wa.me/${cleanCustomerPhone}?text=${encodeURIComponent(
-    `Namaste ${data.name} ji! Balaji Dry Cleaners se aapki booking (${data.bookingCode}) confirm ho gayi hai.`
+    `Hello ${data.name}! Balaji Dry Cleaners has received and confirmed your booking (${data.bookingCode}).`
   )}`;
 
   const slotLabels: Record<string, string> = {
-    subah: "Subah (8:00 AM - 12:00 PM)",
-    dopahar: "Dopahar (12:00 PM - 4:00 PM)",
-    shaam: "Shaam (4:00 PM - 8:00 PM)",
+    subah: "Morning (8:00 AM - 12:00 PM)",
+    dopahar: "Afternoon (12:00 PM - 4:00 PM)",
+    shaam: "Evening (4:00 PM - 8:00 PM)",
   };
   const slotDisplay = slotLabels[data.pickupSlot.toLowerCase()] || data.pickupSlot;
 
   // 1. WhatsApp Text for Owner
-  const whatsappBody = `🧺 *NAYI BOOKING: ${data.bookingCode}*
+  const whatsappBody = `🧺 *NEW BOOKING: ${data.bookingCode}*
 ──────────────────────
 👤 *Customer:* ${data.name}
 📞 *Phone:* ${data.phone}
@@ -132,17 +132,17 @@ export async function notifyNewInquiry(data: InquiryNotificationData): Promise<v
   const ownerEmail = process.env.OWNER_EMAIL;
   const cleanCustomerPhone = data.phone.replace(/[^0-9]/g, "");
   const waReplyLink = `https://wa.me/${cleanCustomerPhone}?text=${encodeURIComponent(
-    `Namaste ${data.name} ji! Balaji Dry Cleaners se aapka inquiry message mila.`
+    `Hello ${data.name}! Balaji Dry Cleaners has received your inquiry message.`
   )}`;
 
   // 1. WhatsApp Text for Owner
-  const whatsappBody = `💬 *NAYI WEBSITE INQUIRY*
+  const whatsappBody = `💬 *NEW WEBSITE INQUIRY*
 ──────────────────────
 👤 *Customer:* ${data.name}
 📞 *Phone:* ${data.phone}
 ${data.email ? `✉️ *Email:* ${data.email}\n` : ""}
 📝 *Message:*
-"${data.message || "Koi message nahi likha gaya."}"
+"${data.message || "No message text provided."}"
 
 👉 *Reply to customer:* ${waReplyLink}`;
 

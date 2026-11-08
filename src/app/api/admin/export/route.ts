@@ -18,7 +18,7 @@ function escapeCsvCell(val: any): string {
 export async function GET(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   const { searchParams } = request.nextUrl;

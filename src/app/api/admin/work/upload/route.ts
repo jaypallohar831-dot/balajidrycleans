@@ -15,7 +15,7 @@ import { ok, fail } from "@/lib/response";
 export async function POST(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   try {
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     const file = formData.get("file") as File | null;
 
     if (!file) {
-      return fail("VALIDATION_ERROR", "Kripya koi image file select karein.", 422);
+      return fail("VALIDATION_ERROR", "Please select an image file to upload.", 422);
     }
 
     // Check mime type
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     if (!allowedMimes.includes(mime)) {
       return fail(
         "VALIDATION_ERROR",
-        "Keval JPG, PNG ya WEBP images hi allowed hain.",
+        "Only JPG, PNG, and WEBP image formats are supported.",
         422
       );
     }
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     // Check size limit: 10MB
     const MAX_SIZE = 10 * 1024 * 1024;
     if (file.size > MAX_SIZE) {
-      return fail("VALIDATION_ERROR", "Image size 10MB se kam hona chahiye.", 422);
+      return fail("VALIDATION_ERROR", "Image size must be less than 10MB.", 422);
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
     return ok({ url: publicUrl, filename });
   } catch (err: unknown) {
     console.error("[WorkUpload:POST_ERROR]", err);
-    return fail("SERVER_ERROR", "Image upload nahi ho payi. Dobara try karein.", 500);
+    return fail("SERVER_ERROR", "Image upload failed. Please try again.", 500);
   }
 }
 

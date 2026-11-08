@@ -90,10 +90,10 @@ export default function AdminDashboardPage() {
             Dashboard
           </span>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0B2540] tracking-tight mt-0.5">
-            Dukaan ki Summary
+            Store Overview
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Real-time orders, customer inquiries aur daily updates.
+            Real-time orders, customer inquiries, and daily updates.
           </p>
         </div>
 
@@ -124,7 +124,7 @@ export default function AdminDashboardPage() {
           <AlertCircle className="w-5 h-5 text-red-500 shrink-0" />
           <span>{error}</span>
           <button onClick={fetchStats} className="ml-auto text-xs underline font-bold">
-            Dubara try karein
+            Try again
           </button>
         </div>
       )}
@@ -148,7 +148,7 @@ export default function AdminDashboardPage() {
             {loading ? <Loader2 className="w-6 h-6 animate-spin text-slate-400" /> : data?.metrics.newInquiries ?? 0}
           </div>
           <span className="text-[11px] sm:text-xs text-amber-600 font-semibold mt-1 inline-flex items-center gap-1">
-            <span>Dekhein</span>
+            <span>View Inquiries</span>
             <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
           </span>
         </Link>
@@ -170,7 +170,7 @@ export default function AdminDashboardPage() {
             {loading ? <Loader2 className="w-6 h-6 animate-spin text-slate-400" /> : data?.metrics.newBookingsToday ?? 0}
           </div>
           <span className="text-[11px] sm:text-xs text-blue-600 font-semibold mt-1 inline-flex items-center gap-1">
-            <span>Aaj ke orders</span>
+            <span>Today&apos;s orders</span>
             <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
           </span>
         </Link>
@@ -192,7 +192,7 @@ export default function AdminDashboardPage() {
             {loading ? <Loader2 className="w-6 h-6 animate-spin text-slate-400" /> : data?.metrics.pendingPickups ?? 0}
           </div>
           <span className="text-[11px] sm:text-xs text-purple-600 font-semibold mt-1 inline-flex items-center gap-1">
-            <span>Pickup baki hai</span>
+            <span>Pickups pending</span>
             <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
           </span>
         </Link>
@@ -214,7 +214,7 @@ export default function AdminDashboardPage() {
             {loading ? <Loader2 className="w-6 h-6 animate-spin text-slate-400" /> : data?.metrics.readyForDelivery ?? 0}
           </div>
           <span className="text-[11px] sm:text-xs text-emerald-600 font-semibold mt-1 inline-flex items-center gap-1">
-            <span>Delivery bhejni hai</span>
+            <span>Out for delivery</span>
             <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
           </span>
         </Link>
@@ -229,14 +229,14 @@ export default function AdminDashboardPage() {
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-base sm:text-lg font-bold text-white">
-                Hamara Kaam (Work Showcase)
+                Our Work (Showcase Gallery)
               </h3>
               <span className="text-[10px] font-extrabold uppercase bg-[#38A8F5] text-[#0B2540] px-2 py-0.5 rounded-full">
                 New Page
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-300 mt-0.5">
-              Dukaan ke naye dry cleaned kapdo ke Before & After photos aur tags add ya edit karein.
+              Add and manage Before & After dry cleaning transformation photos and tags.
             </p>
           </div>
         </div>
@@ -247,14 +247,14 @@ export default function AdminDashboardPage() {
             target="_blank"
             className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-white transition-colors"
           >
-            Live Page Dekhein
+            View Live Page
           </Link>
           <Link
             href="/admin/work"
             className="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-[#38A8F5] hover:bg-[#2597e8] text-[#0B2540] flex items-center gap-1.5 transition-all shadow-sm"
           >
             <Plus className="w-4 h-4" />
-            <span>Work Manage Karein</span>
+            <span>Manage Showcase</span>
           </Link>
         </div>
       </div>
@@ -267,25 +267,25 @@ export default function AdminDashboardPage() {
               Latest Activity
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
-              Haal hi ke pickup bookings aur inquiry requests.
+              Recent pickup bookings and contact inquiries.
             </p>
           </div>
           <Link
             href="/admin/bookings"
             className="text-xs font-bold text-[#1278BF] hover:underline"
           >
-            Sabhi dekhein →
+            View all →
           </Link>
         </div>
 
         {loading ? (
           <div className="py-12 flex flex-col items-center justify-center text-slate-400">
             <Loader2 className="w-8 h-8 animate-spin text-[#38A8F5] mb-2" />
-            <p className="text-sm">Activity load ho rahi hai...</p>
+            <p className="text-sm">Loading activity...</p>
           </div>
         ) : !data?.recentActivity || data.recentActivity.length === 0 ? (
           <div className="py-12 text-center text-slate-500 text-sm">
-            Abhi tak koi activity record nahi hui hai.
+            No recent activity recorded yet.
           </div>
         ) : (
           <div className="divide-y divide-slate-100">

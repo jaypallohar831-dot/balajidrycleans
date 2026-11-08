@@ -72,7 +72,7 @@ export function Process() {
             transition={{ duration: 0.5, delay: 0.08 }}
             className="text-3.5xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
           >
-            Chaar kadam mein
+            Simple 4-Step Process
           </motion.h2>
 
           <motion.p
@@ -82,8 +82,7 @@ export function Process() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mt-3.5 text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed"
           >
-            Simple, transparent aur bina kisi pareshani ke — aapke kapde 4 aasan
-            steps mein bilkul naye jaise taiyaar.
+            Simple, transparent, and completely hassle-free — your garments restored to perfection in 4 easy steps.
           </motion.p>
         </div>
 

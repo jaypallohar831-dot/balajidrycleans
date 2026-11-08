@@ -14,10 +14,10 @@ export default function Home() {
       {/* 1. Hero Section (#home) */}
       <Hero />
 
-      {/* 2. Why Choose Us Section (#about: "Kyun Balaji") */}
+      {/* 2. Why Choose Us Section (#about) */}
       <WhyChooseUs />
 
-      {/* 3. Services Section (#services: "Aapke har kapde ke liye") */}
+      {/* 3. Services Section (#services) */}
       <Services />
 
       {/* 4. Live Work Showcase Teaser ("Before & After") */}
@@ -26,10 +26,10 @@ export default function Home() {
       {/* 5. Winter Care Banner */}
       <WinterBanner />
 
-      {/* 6. Process Section (#process: "Chaar kadam mein") */}
+      {/* 6. Process Section (#process) */}
       <Process />
 
-      {/* 7. Pickup Booking Section (#pickup: "Pickup book karein") */}
+      {/* 7. Pickup Booking Section (#pickup) */}
       <PickupBooking />
 
       {/* 8. Contact Section (#contact: 3 info blocks + Google Maps) */}

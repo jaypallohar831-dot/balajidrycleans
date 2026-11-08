@@ -38,13 +38,13 @@ export function WorkTeaser() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EBF6FE] text-[#1278BF] text-xs font-bold mb-3 border border-[#D2ECFD]">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>HAMARA KAAM · LIVE RESULTS</span>
+              <span>OUR WORK · PROVEN RESULTS</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-[#0B2540] tracking-tight">
-              Before & After Dekhein — <span className="text-[#1278BF]">Asli Safai Ka Saboot</span>
+              Before & After Gallery — <span className="text-[#1278BF]">Real Proof of Quality</span>
             </h2>
             <p className="text-xs sm:text-base text-slate-600 mt-2 max-w-xl">
-              Designer lehengas, suits aur winter blazers par hamara live cleaning aur steam finish result dekhein.
+              Explore our actual dry cleaning and industrial steam press results on designer lehengas, suits, and winter blazers.
             </p>
           </div>
 
@@ -52,7 +52,7 @@ export function WorkTeaser() {
             href="/work"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#0B2540] hover:bg-[#163A5C] text-white text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-105 shrink-0 self-start sm:self-auto"
           >
-            <span>Sabhi Work Dekhein</span>
+            <span>View All Work</span>
             <ArrowRight className="w-4 h-4 text-[#38A8F5]" />
           </Link>
         </div>

@@ -14,7 +14,7 @@ export function FloatingWhatsApp() {
   if (pathname?.startsWith("/admin")) return null;
 
   const whatsappUrl = getWhatsAppLink(
-    `Namaste ${siteConfig.name}! Mujhe dry cleaning service ke baare mein poochna hai.`
+    `Hello ${siteConfig.name}! I would like to inquire about your dry cleaning services.`
   );
 
   return (
@@ -34,7 +34,7 @@ export function FloatingWhatsApp() {
               transition={{ duration: 0.18 }}
               className="hidden sm:block absolute right-full mr-3 px-3.5 py-1.5 rounded-full bg-[#0B2540] text-white text-xs font-bold shadow-lg whitespace-nowrap pointer-events-none border border-slate-700/50"
             >
-              <span>WhatsApp karein</span>
+              <span>Chat on WhatsApp</span>
               {/* Pointer Triangle */}
               <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[#0B2540] rotate-45 border-r border-t border-slate-700/50" />
             </motion.div>
@@ -58,7 +58,7 @@ export function FloatingWhatsApp() {
           onMouseLeave={() => setShowTooltip(false)}
           onFocus={() => setShowTooltip(true)}
           onBlur={() => setShowTooltip(false)}
-          aria-label="WhatsApp karein"
+          aria-label="Chat with us on WhatsApp"
           className="relative w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba5a] active:scale-95 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40"
         >
           <MessageCircle className="w-7 h-7 sm:w-7.5 sm:h-7.5 fill-white/20 stroke-[2.2]" />

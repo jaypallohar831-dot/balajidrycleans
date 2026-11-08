@@ -12,25 +12,32 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const baseUrl = siteConfig.url.replace(/\/$/, "");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://balajidrycleaners.com"),
+  metadataBase: new URL(baseUrl),
   title: {
     default: "Balaji Dry Cleaners — Premium Dry Cleaning & Laundry in Bhilwara",
-    template: "%s | Balaji Dry Cleaners",
+    template: "%s | Balaji Dry Cleaners Bhilwara",
   },
   description:
-    "Bhilwara's trusted dry cleaning experts in RK Colony. Professional dry cleaning for suits, sarees, sherwanis, winter jackets, blankets & curtains with free doorstep pickup.",
+    "Bhilwara's trusted dry cleaning experts in RK Colony. Professional fabric care for suits, bridal lehengas, sarees, sherwanis, winter jackets, blankets & curtains with free doorstep pickup.",
   keywords: [
     "Balaji Dry Cleaners",
     "Dry Cleaner Bhilwara",
     "Dry Cleaning RK Colony Bhilwara",
     "Best Dry Cleaners in Bhilwara",
     "Laundry Service Bhilwara",
+    "Doorstep Laundry Bhilwara",
     "Suit dry cleaning Bhilwara",
     "Saree dry cleaning Bhilwara",
+    "Lehenga dry cleaning Bhilwara",
+    "Sherwani dry cleaning Bhilwara",
     "Steam ironing Bhilwara",
-    "Sherwani dry cleaning",
+    "Winter jacket dry cleaning Bhilwara",
     "Rajai Kambal dry cleaning Bhilwara",
+    "Curtain dry cleaning Bhilwara",
+    "Dry cleaner near me Bhilwara",
   ],
   authors: [{ name: "Balaji Dry Cleaners" }],
   creator: "Balaji Dry Cleaners",
@@ -51,9 +58,9 @@ export const metadata: Metadata = {
     title: "Balaji Dry Cleaners — Premium Dry Cleaning in Bhilwara",
     description:
       "Spotless dry cleaning & fabric care in RK Colony, Bhilwara. Suits, sarees, lehengas, winter wear and doorstep pickup.",
-    url: "https://balajidrycleaners.com",
+    url: baseUrl,
     siteName: "Balaji Dry Cleaners",
-    locale: "hi_IN",
+    locale: "en_IN",
     type: "website",
     images: [
       {
@@ -83,63 +90,163 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://balajidrycleaners.com",
+    canonical: baseUrl,
+  },
+  other: {
+    "geo.region": "IN-RJ",
+    "geo.placename": "Bhilwara",
+    "geo.position": `${siteConfig.address.coordinates.lat};${siteConfig.address.coordinates.lng}`,
+    ICBM: `${siteConfig.address.coordinates.lat}, ${siteConfig.address.coordinates.lng}`,
   },
 };
 
-// LocalBusiness JSON-LD Schema
-const localBusinessSchema = {
+// Comprehensive Schema.org Graph (LocalBusiness + WebSite + FAQPage + Breadcrumbs)
+const structuredDataSchema = {
   "@context": "https://schema.org",
-  "@type": "DryCleaningOrLaundry",
-  name: siteConfig.name,
-  description: siteConfig.description,
-  image: "https://balajidrycleaners.com/og-image.jpg",
-  telephone: `+${siteConfig.whatsapp}`,
-  url: "https://balajidrycleaners.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "RK Colony",
-    addressLocality: "Bhilwara",
-    addressRegion: "Rajasthan",
-    postalCode: "311001",
-    addressCountry: "IN",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: siteConfig.address.coordinates.lat,
-    longitude: siteConfig.address.coordinates.lng,
-  },
-  openingHoursSpecification: [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
+      "@type": "DryCleaningOrLaundry",
+      "@id": `${baseUrl}/#localbusiness`,
+      name: siteConfig.name,
+      alternateName: [
+        "Balaji Drycleaners Bhilwara",
+        "Balaji Laundry Bhilwara",
+        "Balaji Dry Cleaning RK Colony",
       ],
-      opens: "09:00",
-      closes: "20:30",
+      description: siteConfig.description,
+      image: `${baseUrl}/og-image.jpg`,
+      logo: `${baseUrl}/icon.svg`,
+      telephone: `+${siteConfig.whatsapp}`,
+      url: baseUrl,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: siteConfig.address.full,
+        addressLocality: "Bhilwara",
+        addressRegion: "Rajasthan",
+        postalCode: siteConfig.address.pincode,
+        addressCountry: "IN",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: siteConfig.address.coordinates.lat,
+        longitude: siteConfig.address.coordinates.lng,
+      },
+      hasMap: siteConfig.address.mapsUrl,
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          opens: "09:00",
+          closes: "20:30",
+        },
+      ],
+      priceRange: "₹₹",
+      paymentAccepted: "Cash, UPI, Google Pay, PhonePe, Paytm",
+      currenciesAccepted: "INR",
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Bhilwara" },
+        { "@type": "Place", name: "RK Colony, Bhilwara" },
+        { "@type": "Place", name: "Patel Nagar, Bhilwara" },
+        { "@type": "Place", name: "Shastri Nagar, Bhilwara" },
+        { "@type": "Place", name: "Subhash Nagar, Bhilwara" },
+        { "@type": "Place", name: "Azad Nagar, Bhilwara" },
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Dry Cleaning & Laundry Services",
+        itemListElement: siteConfig.services.map((service) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: service.title,
+            description: service.description,
+          },
+        })),
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${baseUrl}/#website`,
+      url: baseUrl,
+      name: siteConfig.name,
+      inLanguage: "en-IN",
+      publisher: {
+        "@id": `${baseUrl}/#localbusiness`,
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${baseUrl}/#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Do you offer doorstep pickup and delivery in Bhilwara?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, Balaji Dry Cleaners provides convenient doorstep pickup and delivery across RK Colony, Patel Nagar, Shastri Nagar, Subhash Nagar, and surrounding Bhilwara neighborhoods.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What items can I get dry cleaned at Balaji Dry Cleaners?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We specialize in suits, blazers, sherwanis, heavy bridal lehengas, delicate silk sarees, winter jackets, quilts, blankets, and window curtains.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How much time does dry cleaning take?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Standard dry cleaning service takes 24 to 48 hours. Express urgent processing is also available upon request.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can tough stains like oil, curry, or ink be safely removed?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, our certified fabric technicians use imported non-bleaching solvents and spot-treatment equipment to gently treat tough stains without harming delicate fibers or colors.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do I schedule a pickup?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can book directly via our online booking form on this website or message us on WhatsApp at +91 80058 17455.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${baseUrl}/#breadcrumbs`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: baseUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Work Showcase",
+          item: `${baseUrl}/work`,
+        },
+      ],
     },
   ],
-  priceRange: "₹₹",
-  paymentAccepted: "Cash, UPI, Online",
-  currenciesAccepted: "INR",
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Dry Cleaning & Laundry Services",
-    itemListElement: siteConfig.services.map((service) => ({
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: service.title,
-        description: service.description,
-      },
-    })),
-  },
 };
 
 export default function RootLayout({
@@ -148,12 +255,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="hi" suppressHydrationWarning className={`${jakarta.variable} h-full antialiased scroll-smooth`}>
+    <html lang="en" suppressHydrationWarning className={`${jakarta.variable} h-full antialiased scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
+            __html: JSON.stringify(structuredDataSchema),
           }}
         />
       </head>

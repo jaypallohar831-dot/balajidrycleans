@@ -45,7 +45,7 @@ const CATEGORY_PRESETS = [
   "Wedding Wear",
   "Winter Care",
   "Stain Removal",
-  "Rajai & Kambal",
+  "Quilts & Blankets",
   "Daily Wear",
   "Shoes & Bags",
   "Curtains & Sofa",
@@ -104,7 +104,7 @@ export default function AdminWorkPage() {
       }
     } catch {
       setMessage({
-        text: "Work items load karne mein samasya aayi.",
+        text: "Failed to load work items. Please refresh.",
         type: "error",
       });
     } finally {
@@ -165,7 +165,7 @@ export default function AdminWorkPage() {
 
       const json = await res.json();
       if (!res.ok || !json.ok) {
-        throw new Error(json?.error?.message || "Upload fail ho gaya");
+        throw new Error(json?.error?.message || "Upload failed");
       }
 
       if (isBefore) {
@@ -174,7 +174,7 @@ export default function AdminWorkPage() {
         setAfterImage(json.data.url);
       }
       setMessage({
-        text: `${type === "before" ? "Before" : "After"} photo upload ho gayi!`,
+        text: `${type === "before" ? "Before" : "After"} photo uploaded successfully!`,
         type: "success",
       });
     } catch (err: unknown) {
@@ -191,7 +191,7 @@ export default function AdminWorkPage() {
     e.preventDefault();
     if (!title.trim() || !afterImage.trim()) {
       setMessage({
-        text: "Kripya Title aur After Photo zaroor bharein.",
+        text: "Please provide both a Title and an After Photo.",
         type: "error",
       });
       return;
@@ -225,19 +225,19 @@ export default function AdminWorkPage() {
 
       const json = await res.json();
       if (!res.ok || !json.ok) {
-        throw new Error(json?.error?.message || "Save karne mein samasya aayi.");
+        throw new Error(json?.error?.message || "Failed to save work item.");
       }
 
       setMessage({
         text: editingItem
-          ? "Work project safaltapoorvak update ho gaya!"
-          : "Naya work project safaltapoorvak jud gaya!",
+          ? "Showcase project updated successfully!"
+          : "New showcase project added successfully!",
         type: "success",
       });
       setIsModalOpen(false);
       fetchWorks();
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Error aayi";
+      const msg = err instanceof Error ? err.message : "An error occurred";
       setMessage({ text: msg, type: "error" });
     } finally {
       setActionLoading(false);
@@ -258,12 +258,12 @@ export default function AdminWorkPage() {
           prev.map((w) => (w.id === item.id ? { ...w, is_active: !w.is_active } : w))
         );
         setMessage({
-          text: `"${item.title}" ${!item.is_active ? "ab live dikhega" : "ab hide kar diya gaya hai"}.`,
+          text: `"${item.title}" is now ${!item.is_active ? "live on the website" : "hidden"}.`,
           type: "success",
         });
       }
     } catch {
-      setMessage({ text: "Status badalne mein samasya aayi.", type: "error" });
+      setMessage({ text: "Failed to update status. Please try again.", type: "error" });
     } finally {
       setActionLoading(false);
     }
@@ -272,7 +272,7 @@ export default function AdminWorkPage() {
   const handleDelete = async (item: WorkItem) => {
     if (
       !confirm(
-        `Kya aap "${item.title}" work project ko sachme delete karna chahte hain?`
+        `Are you sure you want to permanently delete "${item.title}"?`
       )
     ) {
       return;
@@ -287,11 +287,11 @@ export default function AdminWorkPage() {
       if (json.ok) {
         setWorks((prev) => prev.filter((w) => w.id !== item.id));
         setMessage({
-          text: "Work project safaltapoorvak delete ho gaya.",
+          text: "Work project deleted successfully.",
           type: "success",
         });
       } else {
-        throw new Error(json?.error?.message || "Delete fail hua");
+        throw new Error(json?.error?.message || "Delete failed");
       }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Delete error";
@@ -332,10 +332,10 @@ export default function AdminWorkPage() {
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0B2540] tracking-tight mt-0.5">
-            Hamara Kaam (Work Showcase)
+            Our Work (Showcase Gallery)
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Yahan se aap apne kiye huye dry cleaning aur laundry ke Before & After photos aur details daal sakte hain.
+            Manage your Before & After dry cleaning transformation photos, descriptions, and tags.
           </p>
         </div>
 
@@ -346,7 +346,7 @@ export default function AdminWorkPage() {
             className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold transition-all shadow-xs"
           >
             <ExternalLink className="w-4 h-4 text-[#1278BF]" />
-            <span>Live Website Par Dekhein</span>
+            <span>View on Live Website</span>
           </Link>
 
           <button
@@ -355,7 +355,7 @@ export default function AdminWorkPage() {
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1278BF] hover:bg-[#0E6099] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#1278BF]/20 transition-all hover:scale-[1.02] cursor-pointer"
           >
             <Plus className="w-4 h-4" />
-            <span>Naya Work Dalein</span>
+            <span>Add New Item</span>
           </button>
         </div>
       </div>
@@ -419,7 +419,7 @@ export default function AdminWorkPage() {
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Work title, description ya category search karein..."
+            placeholder="Search by title, description, or category..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#1278BF] focus:bg-white transition-colors"
@@ -436,7 +436,7 @@ export default function AdminWorkPage() {
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
-            Sabhi ({works.length})
+            All ({works.length})
           </button>
           {allCategories.map((cat) => (
             <button
@@ -459,16 +459,16 @@ export default function AdminWorkPage() {
       {loading ? (
         <div className="flex flex-col items-center justify-center p-14 bg-white rounded-3xl border border-slate-200/80">
           <Loader2 className="w-8 h-8 text-[#1278BF] animate-spin mb-3" />
-          <p className="text-sm font-semibold text-slate-600">Work projects load ho rahe hain...</p>
+          <p className="text-sm font-semibold text-slate-600">Loading showcase projects...</p>
         </div>
       ) : filteredWorks.length === 0 ? (
         <div className="flex flex-col items-center justify-center p-14 bg-white rounded-3xl border border-dashed border-slate-300 text-center">
           <div className="w-14 h-14 rounded-2xl bg-[#EBF6FE] text-[#1278BF] flex items-center justify-center mb-3.5">
             <Sparkles className="w-7 h-7" />
           </div>
-          <h3 className="text-base font-bold text-slate-800">Koi work project nahi mila</h3>
+          <h3 className="text-base font-bold text-slate-800">No showcase projects found</h3>
           <p className="text-xs sm:text-sm text-slate-500 max-w-sm mt-1">
-            Aapne abhi tak koi work add nahi kiya hai, ya search filter se match nahi ho raha.
+            You have not added any work items yet, or no items match your search filter.
           </p>
           <button
             type="button"
@@ -476,7 +476,7 @@ export default function AdminWorkPage() {
             className="mt-4 px-4 py-2 rounded-xl bg-[#1278BF] text-white text-xs sm:text-sm font-bold flex items-center gap-2 shadow-xs cursor-pointer"
           >
             <Plus className="w-4 h-4" />
-            <span>Pehla Work Dalein</span>
+            <span>Add First Project</span>
           </button>
         </div>
       ) : (
@@ -595,7 +595,7 @@ export default function AdminWorkPage() {
                       ? "bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
                       : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                   }`}
-                  title={item.is_active ? "Website se hide karein" : "Website par live karein"}
+                  title={item.is_active ? "Hide from website" : "Publish live on website"}
                 >
                   {item.is_active ? (
                     <>
@@ -645,10 +645,10 @@ export default function AdminWorkPage() {
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
               <div>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[#1278BF]">
-                  {editingItem ? "Edit Work" : "Naya Work Dalein"}
+                  {editingItem ? "Edit Work" : "Add New Item"}
                 </span>
                 <h2 className="text-xl sm:text-2xl font-black text-[#0B2540]">
-                  {editingItem ? "Work Project Edit Karein" : "Dukaan Ka Naya Kaam Add Karein"}
+                  {editingItem ? "Edit Showcase Item" : "Add New Showcase Transformation"}
                 </h2>
               </div>
               <button
@@ -664,7 +664,7 @@ export default function AdminWorkPage() {
               {/* Title */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Work Title (Kapde / Service Ka Naam) *
+                  Work Title (Garment or Service Name) *
                 </label>
                 <input
                   type="text"
@@ -680,7 +680,7 @@ export default function AdminWorkPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Category (Kis type ka kapda hai) *
+                    Category (Fabric / Garment Type) *
                   </label>
                   <select
                     value={category}
@@ -697,7 +697,7 @@ export default function AdminWorkPage() {
 
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Display Order (Website par position)
+                    Display Order (Position on website)
                   </label>
                   <input
                     type="number"
@@ -712,11 +712,11 @@ export default function AdminWorkPage() {
               {/* Description */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Description (Kya samasya thi aur kaise saaf/press kiya)
+                  Description (Issue addressed and cleaning technique applied)
                 </label>
                 <textarea
                   rows={2}
-                  placeholder="e.g. Haldi aur tel ke 3 purane ziddi daag the, gentle spotting karke 100% bina fabric damage kiye nikal diye aur Italian steam press kiya."
+                  placeholder="e.g. Tough oil and turmeric stains removed using gentle eco-solvents without fabric damage, finished with Italian steam press."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1278BF]"
@@ -729,7 +729,7 @@ export default function AdminWorkPage() {
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
                     <label className="text-xs font-bold text-slate-700">
-                      1. Before Photo (Safai Se Pehle)
+                      1. Before Photo (Prior to Cleaning)
                     </label>
                     <span className="text-[10px] text-slate-400">Optional</span>
                   </div>
@@ -776,14 +776,14 @@ export default function AdminWorkPage() {
                           <Upload className="w-5 h-5 text-slate-400" />
                         )}
                         <span className="text-xs font-bold text-slate-700">
-                          {uploadingBefore ? "Uploading..." : "Phone / PC Se Upload Karein"}
+                          {uploadingBefore ? "Uploading..." : "Upload from Device"}
                         </span>
                         <span className="text-[10px] text-slate-400">JPG, PNG (Max 10MB)</span>
                       </button>
 
                       <input
                         type="url"
-                        placeholder="Ya online image URL paste karein..."
+                        placeholder="Or paste online image URL..."
                         value={beforeImage}
                         onChange={(e) => setBeforeImage(e.target.value)}
                         className="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-[#1278BF]"
@@ -796,10 +796,10 @@ export default function AdminWorkPage() {
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
                     <label className="text-xs font-bold text-[#0B2540] flex items-center gap-1">
-                      <span>2. After Photo (Naya / Safai Ke Baad)</span>
+                      <span>2. After Photo (After Dry Cleaning)</span>
                       <span className="text-red-500">*</span>
                     </label>
-                    <span className="text-[10px] font-bold text-emerald-600">Zaroori</span>
+                    <span className="text-[10px] font-bold text-emerald-600">Required</span>
                   </div>
 
                   <input
@@ -844,14 +844,14 @@ export default function AdminWorkPage() {
                           <Upload className="w-5 h-5 text-[#1278BF]" />
                         )}
                         <span className="text-xs font-bold text-[#0B2540]">
-                          {uploadingAfter ? "Uploading..." : "Phone / PC Se Upload Karein"}
+                          {uploadingAfter ? "Uploading..." : "Upload from Device"}
                         </span>
                         <span className="text-[10px] text-slate-500">JPG, PNG (Max 10MB)</span>
                       </button>
 
                       <input
                         type="url"
-                        placeholder="Ya online image URL paste karein..."
+                        placeholder="Or paste online image URL..."
                         value={afterImage}
                         onChange={(e) => setAfterImage(e.target.value)}
                         className="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-[#1278BF]"
@@ -869,7 +869,7 @@ export default function AdminWorkPage() {
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. 100% Zari Safe · Haldi Daag Clean"
+                    placeholder="e.g. 100% Zari Safe · Complete Stain Removal"
                     value={tagText}
                     onChange={(e) => setTagText(e.target.value)}
                     className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1278BF]"
@@ -882,7 +882,7 @@ export default function AdminWorkPage() {
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Daag bilkul gayab ho gaya!"
+                    placeholder="e.g. The stain vanished completely, looks brand new!"
                     value={customerNote}
                     onChange={(e) => setCustomerNote(e.target.value)}
                     className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1278BF]"
@@ -900,7 +900,7 @@ export default function AdminWorkPage() {
                     className="w-4 h-4 text-[#1278BF] rounded"
                   />
                   <span className="text-xs font-bold text-slate-700">
-                    Website Par Live Dikhayein (Active)
+                    Show Live on Website (Active)
                   </span>
                 </label>
 
@@ -940,7 +940,7 @@ export default function AdminWorkPage() {
                   ) : (
                     <>
                       <Check className="w-4 h-4" />
-                      <span>{editingItem ? "Update Karein" : "Work Save Karein"}</span>
+                      <span>{editingItem ? "Update Project" : "Save Showcase Item"}</span>
                     </>
                   )}
                 </button>

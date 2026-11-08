@@ -6,12 +6,12 @@ import { Snowflake, MessageCircle, ArrowRight } from "lucide-react";
 import { siteConfig, getWhatsAppLink } from "@/config/site";
 
 const WINTER_ITEMS = [
-  "Rajai",
-  "Kambal",
-  "Sweater",
-  "Jacket",
-  "Shawl",
-  "Topi-muffler",
+  "Quilts & Blankets",
+  "Heavy Woolens",
+  "Jackets & Coats",
+  "Sweaters & Cardigans",
+  "Pashmina Shawls",
+  "Winter Accessories",
 ];
 
 export function WinterBanner() {
@@ -84,7 +84,7 @@ export function WinterBanner() {
   }, [isInView, prefersReduced]);
 
   const whatsappUrl = getWhatsAppLink(
-    `Namaste ${siteConfig.name}! Sardi ke kapde (Rajai/Kambal/Sweater/Jacket) dry clean karwane hain.`
+    `Hello ${siteConfig.name}! I would like to book dry cleaning for winter wear (Quilts/Blankets/Jackets/Woolens).`
   );
 
   return (
@@ -132,10 +132,10 @@ export function WinterBanner() {
             transition={{ duration: 0.5, delay: 0.08 }}
             className="text-3xl sm:text-4xl lg:text-4.5xl font-extrabold tracking-tight leading-tight text-white"
           >
-            Sardi aa gayi, rajai aur sweater saaf karwa lein
+            Winter is here — time to refresh your woolens & blankets
           </motion.h2>
 
-          {/* Hinglish Subtext */}
+          {/* Subtext */}
           <motion.p
             initial={prefersReduced ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -143,9 +143,7 @@ export function WinterBanner() {
             transition={{ duration: 0.5, delay: 0.16 }}
             className="mt-3.5 sm:mt-4 text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl"
           >
-            Mausam badalte hi apne winter collection aur heavy blankets ko
-            hygienic deep clean karwayein. Bina shrink hue, fresh khushbu aur
-            100% dust-mite free protection ke sath.
+            Give your heavy blankets, quilts, and winter wardrobe a hygienic deep dry clean. 100% shrinkage protection, odor-free freshness, and complete dust-mite elimination.
           </motion.p>
 
           {/* Item Chips */}
@@ -181,7 +179,7 @@ export function WinterBanner() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-full font-bold text-sm sm:text-base text-white bg-[#38A8F5] hover:bg-[#1B96E6] active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg shadow-sky-500/25"
             >
               <MessageCircle className="w-4 h-4 fill-white/25 stroke-[2.2]" />
-              <span>WhatsApp par booking karein</span>
+              <span>Book Winter Cleaning on WhatsApp</span>
               <ArrowRight className="w-4 h-4 stroke-[2.5]" />
             </a>
           </motion.div>

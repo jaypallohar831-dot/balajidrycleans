@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://balajidrycleaners.com";
+  const baseUrl = siteConfig.url.replace(/\/$/, "");
 
   return [
     {

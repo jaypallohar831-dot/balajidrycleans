@@ -32,24 +32,24 @@ export function renderOwnerBookingEmail({
 }: OwnerBookingEmailProps): { subject: string; html: string } {
   const cleanPhone = phone.replace(/[^0-9]/g, "");
   const waReplyLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-    `Namaste ${name} ji! Balaji Dry Cleaners se aapki booking (${bookingCode}) confirm ho gayi hai.`
+    `Hello ${name}! Balaji Dry Cleaners has received and confirmed your booking (${bookingCode}).`
   )}`;
 
   const slotLabels: Record<string, string> = {
-    subah: "Subah (8:00 AM - 12:00 PM)",
-    dopahar: "Dopahar (12:00 PM - 4:00 PM)",
-    shaam: "Shaam (4:00 PM - 8:00 PM)",
+    subah: "Morning (8:00 AM - 12:00 PM)",
+    dopahar: "Afternoon (12:00 PM - 4:00 PM)",
+    shaam: "Evening (4:00 PM - 8:00 PM)",
   };
 
   const slotDisplay = slotLabels[pickupSlot.toLowerCase()] || pickupSlot;
 
   const html = `
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nayi Pickup Booking - ${bookingCode}</title>
+  <title>New Pickup Booking - ${bookingCode}</title>
 </head>
 <body style="margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f1f5f9; color: #0f172a;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
@@ -65,10 +65,10 @@ export function renderOwnerBookingEmail({
     <tr>
       <td style="padding: 24px 32px 16px 32px; text-align: center;">
         <span style="display: inline-block; background: #e0f2fe; color: #0369a1; padding: 6px 16px; border-radius: 9999px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-          Nayi Booking Mil Gayi
+          New Booking Received
         </span>
         <h2 style="margin: 12px 0 4px 0; font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: 1px;">${bookingCode}</h2>
-        <p style="margin: 0; color: #64748b; font-size: 14px;">Ghar se kapde uthane ka order</p>
+        <p style="margin: 0; color: #64748b; font-size: 14px;">Doorstep garment pickup order</p>
       </td>
     </tr>
 
@@ -77,7 +77,7 @@ export function renderOwnerBookingEmail({
       <td style="padding: 8px 32px 24px 32px;">
         <table width="100%" border="0" cellspacing="0" cellpadding="10" style="border-collapse: collapse; font-size: 14px;">
           <tr style="border-bottom: 1px solid #f1f5f9;">
-            <td style="color: #64748b; width: 35%; font-weight: 500;">Customer Naam:</td>
+            <td style="color: #64748b; width: 35%; font-weight: 500;">Customer Name:</td>
             <td style="color: #0f172a; font-weight: 700;">${name}</td>
           </tr>
           <tr style="border-bottom: 1px solid #f1f5f9;">
@@ -107,7 +107,7 @@ export function renderOwnerBookingEmail({
             <td style="color: #0f172a; font-weight: 600;">⏰ ${slotDisplay}</td>
           </tr>
           <tr style="border-bottom: 1px solid #f1f5f9;">
-            <td style="color: #64748b; font-weight: 500; vertical-align: top;">Ghar ka Pata:</td>
+            <td style="color: #64748b; font-weight: 500; vertical-align: top;">Pickup Address:</td>
             <td style="color: #0f172a; font-weight: 600; line-height: 1.4;">📍 ${address}</td>
           </tr>
           ${
@@ -126,9 +126,9 @@ export function renderOwnerBookingEmail({
     <tr>
       <td style="padding: 0 32px 32px 32px; text-align: center;">
         <a href="${waReplyLink}" style="display: inline-block; background-color: #25d366; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 12px; box-shadow: 0 4px 10px rgba(37,211,102,0.3);">
-          💬 WhatsApp par Customer ko Reply Karein
+          💬 Reply to Customer on WhatsApp
         </a>
-        <p style="margin: 12px 0 0 0; color: #94a3b8; font-size: 12px;">Link click karne se sidha customer ka WhatsApp chat khul jayega.</p>
+        <p style="margin: 12px 0 0 0; color: #94a3b8; font-size: 12px;">Clicking this link opens a direct WhatsApp chat with the customer.</p>
       </td>
     </tr>
 
@@ -136,7 +136,7 @@ export function renderOwnerBookingEmail({
     <tr>
       <td style="padding: 16px 32px; background: #f8fafc; text-align: center; border-top: 1px solid #e2e8f0;">
         <p style="margin: 0; font-size: 12px; color: #94a3b8;">
-          Balaji Dry Cleaners · RK Colony, Bhilwara · Auto-generated Website Notification
+          Balaji Dry Cleaners · RK Colony, Bhilwara · Automated Website Notification
         </p>
       </td>
     </tr>
@@ -146,7 +146,7 @@ export function renderOwnerBookingEmail({
   `.trim();
 
   return {
-    subject: `🔔 Nayi Booking: ${bookingCode} - ${name} (${serviceTitle})`,
+    subject: `🔔 New Booking: ${bookingCode} - ${name} (${serviceTitle})`,
     html,
   };
 }
@@ -166,15 +166,15 @@ export function renderOwnerInquiryEmail({
 }: OwnerInquiryEmailProps): { subject: string; html: string } {
   const cleanPhone = phone.replace(/[^0-9]/g, "");
   const waReplyLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-    `Namaste ${name} ji! Balaji Dry Cleaners se aapka message mila.`
+    `Hello ${name}! Balaji Dry Cleaners has received your inquiry.`
   )}`;
 
   const html = `
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Nayi Website Inquiry - ${name}</title>
+  <title>New Website Inquiry - ${name}</title>
 </head>
 <body style="margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f1f5f9; color: #0f172a;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0;">
@@ -186,10 +186,10 @@ export function renderOwnerInquiryEmail({
     </tr>
     <tr>
       <td style="padding: 24px 32px;">
-        <h2 style="margin: 0 0 16px 0; font-size: 20px; color: #0f172a;">💬 Nayi Inquiry Aayi Hai</h2>
+        <h2 style="margin: 0 0 16px 0; font-size: 20px; color: #0f172a;">💬 New Inquiry Received</h2>
         <table width="100%" border="0" cellspacing="0" cellpadding="8" style="font-size: 14px;">
           <tr>
-            <td style="color: #64748b; width: 30%;">Naam:</td>
+            <td style="color: #64748b; width: 30%;">Name:</td>
             <td style="color: #0f172a; font-weight: 700;">${name}</td>
           </tr>
           <tr>
@@ -206,13 +206,13 @@ export function renderOwnerInquiryEmail({
           <tr>
             <td style="color: #64748b; vertical-align: top;">Message:</td>
             <td style="color: #334155; line-height: 1.5; font-style: italic;">
-              "${message || "Koi message nahi likha gaya."}"
+              "${message || "No message text provided."}"
             </td>
           </tr>
         </table>
         <div style="margin-top: 24px; text-align: center;">
           <a href="${waReplyLink}" style="display: inline-block; background-color: #25d366; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 10px;">
-            💬 WhatsApp par Reply Karein
+            💬 Reply on WhatsApp
           </a>
         </div>
       </td>
@@ -223,7 +223,7 @@ export function renderOwnerInquiryEmail({
   `.trim();
 
   return {
-    subject: `💬 Nayi Inquiry: ${name} (${phone})`,
+    subject: `💬 New Inquiry: ${name} (${phone})`,
     html,
   };
 }
@@ -246,19 +246,19 @@ export function renderCustomerConfirmationEmail({
   address,
 }: CustomerConfirmationEmailProps): { subject: string; html: string } {
   const slotLabels: Record<string, string> = {
-    subah: "Subah (8:00 AM - 12:00 PM)",
-    dopahar: "Dopahar (12:00 PM - 4:00 PM)",
-    shaam: "Shaam (4:00 PM - 8:00 PM)",
+    subah: "Morning (8:00 AM - 12:00 PM)",
+    dopahar: "Afternoon (12:00 PM - 4:00 PM)",
+    shaam: "Evening (4:00 PM - 8:00 PM)",
   };
 
   const slotDisplay = slotLabels[pickupSlot.toLowerCase()] || pickupSlot;
 
   const html = `
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Aapki Pickup Booking Confirm Ho Gayi - Balaji Dry Cleaners</title>
+  <title>Your Pickup Booking is Confirmed - Balaji Dry Cleaners</title>
 </head>
 <body style="margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f1f5f9; color: #0f172a;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0;">
@@ -271,8 +271,8 @@ export function renderCustomerConfirmationEmail({
     <tr>
       <td style="padding: 24px 32px; text-align: center;">
         <div style="font-size: 40px; margin-bottom: 8px;">✨</div>
-        <h2 style="margin: 0 0 6px 0; font-size: 24px; color: #0f172a;">Booking Confirm Ho Gayi Hai!</h2>
-        <p style="margin: 0; color: #64748b; font-size: 14px;">Namaste ${name} ji, humne aapka pickup order note kar liya hai.</p>
+        <h2 style="margin: 0 0 6px 0; font-size: 24px; color: #0f172a;">Booking Confirmed!</h2>
+        <p style="margin: 0; color: #64748b; font-size: 14px;">Hello ${name}, we have successfully recorded your pickup order.</p>
         
         <div style="margin: 20px auto; padding: 14px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; max-width: 280px;">
           <p style="margin: 0; font-size: 12px; color: #166534; text-transform: uppercase; font-weight: 700;">Booking Reference</p>
@@ -304,11 +304,11 @@ export function renderCustomerConfirmationEmail({
     </tr>
     <tr>
       <td style="padding: 0 32px 32px 32px; text-align: center;">
-        <p style="margin: 0 0 16px 0; font-size: 13px; color: #64748b;">Koi sawaal hai ya pickup timing change karni hai?</p>
+        <p style="margin: 0 0 16px 0; font-size: 13px; color: #64748b;">Have a question or need to change your pickup timing?</p>
         <a href="https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-          `Namaste Balaji Dry Cleaners! Meri booking ${bookingCode} ke bare mein query hai.`
+          `Hello Balaji Dry Cleaners! I have a question regarding my booking ${bookingCode}.`
         )}" style="display: inline-block; background-color: #25d366; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 10px;">
-          💬 WhatsApp par Baat Karein
+          💬 Chat on WhatsApp
         </a>
       </td>
     </tr>
@@ -323,7 +323,7 @@ export function renderCustomerConfirmationEmail({
   `.trim();
 
   return {
-    subject: `✨ Booking Confirm: ${bookingCode} - Balaji Dry Cleaners`,
+    subject: `✨ Booking Confirmed: ${bookingCode} - Balaji Dry Cleaners`,
     html,
   };
 }

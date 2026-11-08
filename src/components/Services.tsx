@@ -72,7 +72,7 @@ export function Services() {
                 icon: (localMatch?.icon || "Sparkles") as keyof typeof iconMap,
                 inquiry:
                   localMatch?.inquiry ||
-                  `Namaste Balaji Dry Cleaners! Mujhe ${apiService.title} dry clean karwana hai.`,
+                  `Hello Balaji Dry Cleaners! I would like to inquire about ${apiService.title} dry cleaning.`,
               };
             }
           );
@@ -108,7 +108,7 @@ export function Services() {
             className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#1278BF] bg-[#EBF6FE] rounded-full border border-[#D2ECFD] mb-3.5 shadow-xs"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#38A8F5]" />
-            <span>Services</span>
+            <span>Our Services</span>
           </motion.div>
 
           <motion.h2
@@ -118,7 +118,7 @@ export function Services() {
             transition={{ duration: 0.5, delay: 0.08 }}
             className="text-3.5xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
           >
-            Aapke har kapde ke liye
+            Tailored Care for Every Garment
           </motion.h2>
 
           <motion.p
@@ -128,8 +128,7 @@ export function Services() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mt-3.5 text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed"
           >
-            Delicate party wear ho ya daily laundry — hum har kapde ki zaroorat
-            samajhkar modern techniques se care karte hain.
+            From delicate bridal wear to everyday business formals, our modern fabric care ensures garments stay spotless, vibrant, and protected.
           </motion.p>
         </div>
 
@@ -176,7 +175,7 @@ export function Services() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 min-h-[44px] py-2 text-sm font-semibold text-[#0B2540] group-hover:text-[#38A8F5] transition-colors"
                   >
-                    <span>Inquiry karein</span>
+                    <span>Inquire on WhatsApp</span>
                     <ArrowRight className="w-4 h-4 stroke-[2.2] transform group-hover:translate-x-1 transition-transform" />
                   </a>
 

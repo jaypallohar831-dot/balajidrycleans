@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
+
+const baseUrl = siteConfig.url.replace(/\/$/, "");
 
 export const metadata: Metadata = {
-  title: "Hamara Kaam · Before & After Showcase",
+  title: "Our Work · Before & After Showcase",
   description:
-    "Dekhein Balaji Dry Cleaners Bhilwara ke live results: Bridal lehengas, designer sherwanis, pure woolen coats aur heavy blankets ki dry cleaning ke Before & After results.",
+    "Explore actual Before & After dry cleaning results from Balaji Dry Cleaners Bhilwara: bridal lehengas, designer sherwanis, woolen coats, and heavy quilts.",
+  alternates: {
+    canonical: `${baseUrl}/work`,
+  },
   openGraph: {
-    title: "Hamara Kaam (Before & After Showcase) · Balaji Dry Cleaners Bhilwara",
+    title: "Our Work (Before & After Showcase) · Balaji Dry Cleaners Bhilwara",
     description:
-      "Spotless dry cleaning aur delicate fabric care ke live Before & After results. RK Colony, Bhilwara.",
-    url: "https://balajidrycleaners.com/work",
+      "Spotless dry cleaning and delicate fabric care: view actual Before & After transformations. RK Colony, Bhilwara.",
+    url: `${baseUrl}/work`,
   },
 };
 
@@ -19,4 +25,3 @@ export default function WorkLayout({
 }) {
   return <>{children}</>;
 }
-

@@ -15,16 +15,16 @@ export async function PATCH(
 ) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   const { id } = await params;
-  if (!id) return fail("VALIDATION_ERROR", "Inquiry ID zaroori hai.", 422);
+  if (!id) return fail("VALIDATION_ERROR", "Inquiry ID is required.", 422);
 
   const { status } = await request.json();
 
   if (status && !["new", "contacted", "closed"].includes(status)) {
-    return fail("VALIDATION_ERROR", "Amanay inquiry status.", 422);
+    return fail("VALIDATION_ERROR", "Invalid inquiry status.", 422);
   }
 
   const isMock =
@@ -32,7 +32,7 @@ export async function PATCH(
     process.env.NEXT_PUBLIC_SUPABASE_URL.includes("YOUR_PROJECT");
 
   if (isMock) {
-    return ok({ id, status, message: "Inquiry status update ho gaya!" });
+    return ok({ id, status, message: "Inquiry status updated successfully!" });
   }
 
   try {
@@ -52,6 +52,6 @@ export async function PATCH(
     return ok(data);
   } catch (err: any) {
     console.error("[UpdateInquiry:EXCEPTION]", err);
-    return fail("SERVER_ERROR", "Inquiry update karne mein samasya.", 500);
+    return fail("SERVER_ERROR", "Failed to update inquiry.", 500);
   }
 }

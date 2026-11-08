@@ -19,7 +19,7 @@ export async function GET() {
     return res;
   } catch (err: unknown) {
     console.error("[WorkPublicApi:GET]", err);
-    return fail("SERVER_ERROR", "Work load karne mein samasya aayi.", 500);
+    return fail("SERVER_ERROR", "Failed to load showcase items.", 500);
   }
 }
 

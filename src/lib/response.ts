@@ -31,21 +31,21 @@ export const ERRORS = {
   RATE_LIMIT: () =>
     fail(
       "RATE_LIMIT",
-      "Bahut zyada requests aa rahi hain. Thoda ruk kar try karein.",
+      "Too many requests. Please wait a moment and try again.",
       429
     ),
   TURNSTILE: () =>
     fail(
       "TURNSTILE_FAILED",
-      "Bot verification fail ho gayi. Page refresh karke dubara try karein.",
+      "Bot verification failed. Please refresh the page and try again.",
       403
     ),
   SERVER: () =>
     fail(
       "SERVER_ERROR",
-      "Kuch gadbad ho gayi. Thodi der baad try karein ya WhatsApp karein.",
+      "Something went wrong. Please try again shortly or contact us on WhatsApp.",
       500
     ),
   METHOD: () =>
-    fail("METHOD_NOT_ALLOWED", "Ye method allowed nahi hai.", 405),
+    fail("METHOD_NOT_ALLOWED", "Method not allowed.", 405),
 } as const;

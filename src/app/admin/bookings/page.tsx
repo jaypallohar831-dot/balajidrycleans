@@ -161,7 +161,7 @@ export default function AdminBookingsPage() {
 
       const json = await res.json();
       if (json.ok) {
-        setUpdateMsg("Status update ho gaya!");
+        setUpdateMsg("Status updated successfully!");
         setSelectedBooking((prev) => (prev ? { ...prev, status: newStatus, notes: adminNote } : null));
         // refresh list
         fetchBookings();
@@ -177,12 +177,12 @@ export default function AdminBookingsPage() {
 
   const getWhatsAppMessage = (booking: Booking) => {
     if (booking.status === "picked_up") {
-      return `Namaste ${booking.name} ji! Aapke kapde dry cleaning ke liye pickup ho gaye hain (Booking Code: ${booking.booking_code}). - Balaji Dry Cleaners`;
+      return `Hello ${booking.name}! Your garments have been picked up for dry cleaning (Booking Code: ${booking.booking_code}). - Balaji Dry Cleaners`;
     }
     if (booking.status === "delivered") {
-      return `Namaste ${booking.name} ji! Aapke kapde deliver ho chuke hain (Booking Code: ${booking.booking_code}). Balaji Dry Cleaners ko chunne ke liye dhanyawad!`;
+      return `Hello ${booking.name}! Your freshly dry cleaned garments have been delivered (Booking Code: ${booking.booking_code}). Thank you for choosing Balaji Dry Cleaners!`;
     }
-    return `Namaste ${booking.name} ji! Aapki pickup booking ${booking.booking_code} ke bare mein Balaji Dry Cleaners se update hai.`;
+    return `Hello ${booking.name}! This is an update regarding your pickup booking ${booking.booking_code} from Balaji Dry Cleaners.`;
   };
 
   return (
@@ -197,7 +197,7 @@ export default function AdminBookingsPage() {
             Pickup Bookings ({total})
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Search karein, status change karein ya customer ko call/WhatsApp karein.
+            Search orders, update statuses, and connect with customers via Call or WhatsApp.
           </p>
         </div>
 
@@ -218,7 +218,7 @@ export default function AdminBookingsPage() {
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
-            placeholder="Naam, phone ya BDC code se search karein..."
+            placeholder="Search by name, phone, or booking code..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full h-10 pl-9 pr-4 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:border-[#38A8F5]"
@@ -275,14 +275,14 @@ export default function AdminBookingsPage() {
       {loading ? (
         <div className="py-20 flex flex-col items-center justify-center text-slate-400 bg-white rounded-3xl border border-slate-200">
           <Loader2 className="w-8 h-8 animate-spin text-[#38A8F5] mb-2" />
-          <p className="text-sm">Bookings load ho rahi hain...</p>
+          <p className="text-sm">Loading bookings...</p>
         </div>
       ) : bookings.length === 0 ? (
         <div className="py-20 text-center bg-white rounded-3xl border border-slate-200 p-6">
           <CalendarCheck className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-[#0B2540]">Koi booking nahi mili</h3>
+          <h3 className="text-base font-bold text-[#0B2540]">No bookings found</h3>
           <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-sm mx-auto">
-            Aapke filters ke mutabik koi record nahi hai ya abhi tak nayi booking nahi aayi.
+            No records match your selected filters, or no new bookings have been submitted yet.
           </p>
         </div>
       ) : (
@@ -605,7 +605,7 @@ export default function AdminBookingsPage() {
 
                 <textarea
                   rows={2}
-                  placeholder="Admin note likhein (jaise: Rider Rahul assigned)..."
+                  placeholder="Enter admin note (e.g., Rider Rahul assigned)..."
                   value={adminNote}
                   onChange={(e) => setAdminNote(e.target.value)}
                   className="rounded-xl border border-slate-200 p-3 text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:border-[#38A8F5] resize-none"
@@ -623,7 +623,7 @@ export default function AdminBookingsPage() {
                       <span>Saving...</span>
                     </>
                   ) : (
-                    <span>Status Save Karein</span>
+                    <span>Save Status</span>
                   )}
                 </button>
               </div>
@@ -638,7 +638,7 @@ export default function AdminBookingsPage() {
                 {historyLoading ? (
                   <div className="py-4 text-center text-xs text-slate-400">Loading history...</div>
                 ) : bookingHistory.length === 0 ? (
-                  <p className="text-xs text-slate-400">Abhi tak koi status change nahi hua.</p>
+                  <p className="text-xs text-slate-400">No status changes recorded yet.</p>
                 ) : (
                   <div className="flex flex-col gap-3">
                     {bookingHistory.map((h) => (

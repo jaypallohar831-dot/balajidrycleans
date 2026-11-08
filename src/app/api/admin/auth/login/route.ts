@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     const { email } = await request.json();
 
     if (!email || typeof email !== "string") {
-      return fail("VALIDATION_ERROR", "Email address zaroori hai.", 422);
+      return fail("VALIDATION_ERROR", "Email address is required.", 422);
     }
 
     const cleanEmail = email.trim().toLowerCase();
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     if (!isAdminEmail(cleanEmail)) {
       return fail(
         "FORBIDDEN",
-        "Aapka email admin list mein shamil nahi hai. Kripya authorized email daalein.",
+        "Your email is not on the authorized admin list. Please use an authorized email.",
         403
       );
     }
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
 
         if (error) {
           console.error("[AdminAuth:OTP_ERROR]", error.message);
-          return fail("SERVER_ERROR", `Magic link bhejne mein samasya: ${error.message}`, 500);
+          return fail("SERVER_ERROR", `Failed to send magic link: ${error.message}`, 500);
         }
       } catch (err: any) {
         console.warn("[AdminAuth:OTP_FAIL_DEV_BYPASS]", err?.message);
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     // Set secure admin session cookie
     const res = ok(
       {
-        message: "Login safal raha! Dashboard khul raha hai...",
+        message: "Login successful! Opening dashboard...",
         email: cleanEmail,
       },
       200

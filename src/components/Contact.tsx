@@ -66,22 +66,22 @@ export function Contact() {
   const directionsUrl = siteConfig.address.directionsUrl;
   const embedMapUrl = siteConfig.address.embedUrl;
   const instagramUrl = `https://instagram.com/${siteConfig.instagram}`;
-  const whatsappUrl = getWhatsAppLink("Namaste Balaji Dry Cleaners! Mujhe jankari chahiye.");
+  const whatsappUrl = getWhatsAppLink("Hello Balaji Dry Cleaners! I would like to inquire about your services.");
 
   const validate = () => {
     const newErrors: { name?: string; phone?: string } = {};
 
     if (!name.trim()) {
-      newErrors.name = "Kripya apna naam batayein";
+      newErrors.name = "Please enter your full name";
     } else if (name.trim().length < 2) {
-      newErrors.name = "Naam kam se kam 2 akshar ka hona chahiye";
+      newErrors.name = "Name must be at least 2 characters";
     }
 
     const cleanPhone = phone.replace(/[\s\-().]/g, "");
     if (!cleanPhone) {
-      newErrors.phone = "Phone number daalna zaroori hai";
+      newErrors.phone = "Phone number is required";
     } else if (!/^(?:\+?91|0)?([6-9]\d{9})$/.test(cleanPhone)) {
-      newErrors.phone = "Sahi 10-digit Indian mobile number daalein";
+      newErrors.phone = "Please enter a valid 10-digit Indian mobile number";
     }
 
     setErrors(newErrors);
@@ -118,7 +118,7 @@ export function Contact() {
       if (!res.ok || !json.ok) {
         const errorMsg =
           json?.error?.message ||
-          "Kuch gadbad ho gayi. Kripya thodi der baad dubara try karein.";
+          "Something went wrong. Please try again shortly.";
         setSubmitError(errorMsg);
         turnstileRef.current?.reset();
         return;
@@ -131,7 +131,7 @@ export function Contact() {
       setTouched({});
       setErrors({});
     } catch {
-      setSubmitError("Network issue hai. Kripya apna internet connection check karein.");
+      setSubmitError("Network error. Please check your internet connection.");
       turnstileRef.current?.reset();
     } finally {
       setIsSubmitting(false);
@@ -141,10 +141,10 @@ export function Contact() {
   const contactBlocks = [
     {
       icon: MapPin,
-      title: "Dukaan",
+      title: "Store Location",
       primary: siteConfig.address.full,
       subtitle: "RK Colony, Bhilwara (Raj.)",
-      actionText: "Location dekhein",
+      actionText: "View on Google Maps",
       actionHref: googleMapsUrl,
       external: true,
       badge: "Open Daily: 9 AM - 8:30 PM",
@@ -154,7 +154,7 @@ export function Contact() {
       title: "WhatsApp",
       primary: `+${siteConfig.whatsapp}`,
       subtitle: "Instant pickup & inquiry replies",
-      actionText: "Chat shuru karein",
+      actionText: "Chat on WhatsApp",
       actionHref: whatsappUrl,
       external: true,
       badge: "Quick Response",
@@ -164,10 +164,10 @@ export function Contact() {
       title: "Instagram",
       primary: `@${siteConfig.instagram}`,
       subtitle: "Cleaning tips & customer transformations",
-      actionText: "Profile dekhein",
+      actionText: "View Profile",
       actionHref: instagramUrl,
       external: true,
-      badge: "Follow Karein",
+      badge: "Follow on Instagram",
     },
   ];
 
@@ -190,7 +190,7 @@ export function Contact() {
             className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#1278BF] bg-[#EBF6FE] rounded-full border border-[#D2ECFD] mb-3.5 shadow-xs"
           >
             <MapPin className="w-3.5 h-3.5 text-[#38A8F5]" />
-            <span>Sampark Karein</span>
+            <span>Contact Us</span>
           </motion.div>
 
           <motion.h2
@@ -200,7 +200,7 @@ export function Contact() {
             transition={{ duration: 0.5, delay: 0.08 }}
             className="text-3.5xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
           >
-            Dukaan par aayein ya call karein
+            Visit Our Store or Get in Touch
           </motion.h2>
 
           <motion.p
@@ -210,8 +210,7 @@ export function Contact() {
             transition={{ duration: 0.5, delay: 0.16 }}
             className="mt-3.5 text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed"
           >
-            Bhilwara ke RK Colony mein sthit, hum aapki seva ke liye hamesha
-            taiyaar hain.
+            Conveniently located in RK Colony, Bhilwara. We are always ready to assist you.
           </motion.p>
         </div>
 
@@ -276,7 +275,7 @@ export function Contact() {
           })}
         </div>
 
-        {/* ── INQUIRY BHEJEIN FORM CARD ── */}
+        {/* ── INQUIRY SUBMISSION FORM CARD ── */}
         <motion.div
           initial={prefersReduced ? false : { opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -290,10 +289,10 @@ export function Contact() {
                 Direct Message
               </span>
               <h3 className="text-2xl sm:text-3xl font-black text-[#0B2540] mt-2">
-                Inquiry bhejein
+                Send an Inquiry
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm mt-1">
-                Koi sawal ya special kapde ke baare mein jankari chahiye? Message chhodiye, hum sampark karenge.
+                Have a question or need details regarding a specific garment? Leave a message and we will respond promptly.
               </p>
             </div>
 
@@ -308,17 +307,17 @@ export function Contact() {
                 >
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                   <div className="flex-1">
-                    <p className="font-bold">Aapki inquiry mil gayi hai!</p>
+                    <p className="font-bold">Your inquiry has been received!</p>
                     <p className="text-xs text-emerald-700 mt-0.5">
-                      Balaji Dry Cleaners aapse turant sampark karega. Dhanyawad!
+                      Balaji Dry Cleaners will get back to you shortly. Thank you!
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setIsSuccess(false)}
-                    className="text-xs font-semibold text-emerald-800 underline ml-auto"
+                    className="text-xs font-semibold text-emerald-800 underline ml-auto cursor-pointer"
                   >
-                    Naya message
+                    Send another message
                   </button>
                 </motion.div>
               )}
@@ -360,13 +359,13 @@ export function Contact() {
                     className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                   >
                     <User className="w-3.5 h-3.5 text-[#38A8F5]" />
-                    <span>Aapka Naam</span>
+                    <span>Full Name</span>
                     <span className="text-red-500">*</span>
                   </label>
                   <input
                     id="inquiry-name"
                     type="text"
-                    placeholder="Jaise: Sunil Jain"
+                    placeholder="e.g. Sunil Jain"
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -400,7 +399,7 @@ export function Contact() {
                   <input
                     id="inquiry-phone"
                     type="tel"
-                    placeholder="Jaise: 9829012345"
+                    placeholder="e.g. 9829012345"
                     value={phone}
                     onChange={(e) => {
                       setPhone(e.target.value);
@@ -429,13 +428,13 @@ export function Contact() {
                   className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                 >
                   <MessageCircle className="w-3.5 h-3.5 text-[#38A8F5]" />
-                  <span>Aapka Sawal ya Message</span>
+                  <span>Your Message or Question</span>
                   <span className="text-slate-400 text-xs font-normal">(Optional)</span>
                 </label>
                 <textarea
                   id="inquiry-message"
                   rows={3}
-                  placeholder="Jaise: Silk saree par haldi ka daag hatana hai, charges kya rahenge?"
+                  placeholder="e.g. Inquiring about delicate embroidery cleaning on a bridal lehenga..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="w-full rounded-xl border border-slate-200 bg-white p-3.5 text-sm sm:text-base text-slate-800 placeholder:text-slate-400 outline-none transition-all duration-200 focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 resize-none"
@@ -451,12 +450,12 @@ export function Contact() {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin text-[#38A8F5]" />
-                    <span>Inquiry bhej rahe hain...</span>
+                    <span>Sending inquiry...</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4 text-[#38A8F5]" />
-                    <span>Inquiry Bhejein</span>
+                    <span>Send Inquiry</span>
                   </>
                 )}
               </button>
@@ -490,7 +489,7 @@ export function Contact() {
                   </span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-[#0B2540] tracking-tight mt-1">
-                  Dukaan par Padhaarein (Shop Location)
+                  Visit Our Store (Shop Location)
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 mt-0.5 flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-[#38A8F5] shrink-0" />
@@ -508,7 +507,7 @@ export function Contact() {
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 min-h-[44px] rounded-full font-bold text-xs sm:text-sm text-white bg-[#0B2540] hover:bg-[#163A5C] active:scale-95 transition-all shadow-md hover:shadow-lg"
               >
                 <Navigation className="w-4 h-4 fill-white/20 stroke-[2.2]" />
-                <span>Directions Lein</span>
+                <span>Get Directions</span>
               </a>
 
               <a
@@ -555,7 +554,7 @@ export function Contact() {
               <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
                 <span className="text-emerald-700 font-semibold flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Dukaan Khuli Hai
+                  Store Open Today
                 </span>
                 <a
                   href={directionsUrl}
@@ -578,7 +577,7 @@ export function Contact() {
               </div>
               <div>
                 <p className="text-xs font-bold text-[#0B2540]">9:00 AM – 8:30 PM</p>
-                <p className="text-[11px] text-slate-500">Somwar se Ravivar khula hai</p>
+                <p className="text-[11px] text-slate-500">Open Monday to Sunday</p>
               </div>
             </div>
 
@@ -588,7 +587,7 @@ export function Contact() {
               </div>
               <div>
                 <p className="text-xs font-bold text-[#0B2540]">Easy Parking</p>
-                <p className="text-[11px] text-slate-500">Shop ke paas gaadi park karne ki suvidha</p>
+                <p className="text-[11px] text-slate-500">Hassle-free parking near the store</p>
               </div>
             </div>
 
@@ -598,7 +597,7 @@ export function Contact() {
               </div>
               <div>
                 <p className="text-xs font-bold text-[#0B2540]">Doorstep Pickup</p>
-                <p className="text-[11px] text-slate-500">Bhilwara mein home pickup & delivery</p>
+                <p className="text-[11px] text-slate-500">Pickup & delivery across Bhilwara</p>
               </div>
             </div>
           </div>

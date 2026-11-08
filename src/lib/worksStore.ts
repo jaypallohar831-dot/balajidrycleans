@@ -33,14 +33,14 @@ const DEFAULT_WORKS: WorkItem[] = [
     title: "Bridal Silk Lehenga Zari & Spot Care",
     category: "Saree & Lehenga",
     description:
-      "Shaadi ke baad haldi aur mehendi ke daag safe eco-solvent spotting se 100% remove kiye gaye, gota-patti aur zari ki original shine restore hui.",
+      "Post-wedding turmeric and henna stains completely removed with safe eco-solvent spotting; restored original luster of gota-patti and metallic zari work.",
     before_image:
       "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80",
     after_image:
       "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80",
-    tags: ["Bridal Care", "Haldi Daag Clean", "Zari Polish"],
-    tag_text: "100% Zari Safe · Haldi Daag Clean",
-    customer_note: "Bhilwara mein sabse safe bridal lehenga cleaning!",
+    tags: ["Bridal Care", "Stain Removal", "Zari Polish"],
+    tag_text: "100% Zari Safe · Complete Stain Removal",
+    customer_note: "The safest bridal lehenga dry cleaning in Bhilwara!",
     is_featured: true,
     is_active: true,
     display_order: 1,
@@ -51,14 +51,14 @@ const DEFAULT_WORKS: WorkItem[] = [
     title: "Groom Designer Sherwani & Stole Finishing",
     category: "Wedding Wear",
     description:
-      "Delicate embroidery aur velvet work par special dry solvent clean kiya gaya aur Italian steam mannequin par crisp shape diya.",
+      "Delicate hand embroidery and velvet accents cleaned with specialized dry solvents and shaped crisply on an Italian steam mannequin.",
     before_image:
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80",
     after_image:
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
-    tags: ["Sherwani", "Steam Press", "Wedding"],
-    tag_text: "Steam Iron Finish · Zero Shrink",
-    customer_note: "Shaadi ke din bilkul showroom jaisa fresh look mila.",
+    tags: ["Sherwani", "Steam Press", "Wedding Wear"],
+    tag_text: "Steam Press Finish · Zero Shrinkage",
+    customer_note: "Looked pristine and brand new for the wedding day.",
     is_featured: true,
     is_active: true,
     display_order: 2,
@@ -69,14 +69,14 @@ const DEFAULT_WORKS: WorkItem[] = [
     title: "Pure Woolen Blazer & Coat Lint Restoration",
     category: "Winter Care",
     description:
-      "Thand ke mausam mein lint, odour aur dust remove karke fabric soft conditioner treatment diya gaya.",
+      "Deep fiber cleaning removes winter lint, dust, and odors followed by fabric conditioning treatment.",
     before_image:
       "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80",
     after_image:
       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80",
     tags: ["Woolmark Safe", "Lint Free", "Winter Wear"],
     tag_text: "Lint-Free · Woolmark Approved",
-    customer_note: "Puraani coat bilkul nayi jaisi mulayam ho gayi.",
+    customer_note: "Restored my heavy winter coat to soft, showroom condition.",
     is_featured: true,
     is_active: true,
     display_order: 3,
@@ -85,16 +85,16 @@ const DEFAULT_WORKS: WorkItem[] = [
   {
     id: "work-4",
     title: "Double Bed Mink Blanket Deep Hygiene Wash",
-    category: "Rajai & Kambal",
+    category: "Quilts & Blankets",
     description:
-      "Heavy kambal ki anti-bacterial hygiene wash aur vacuum packaging, taaki agle season tak khushbudar aur safe rahe.",
+      "Heavy mink blanket treated with anti-bacterial hygiene cleaning and sealed in protective vacuum packaging for seasonal storage.",
     before_image:
       "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=80",
     after_image:
       "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80",
-    tags: ["Anti-Bacterial", "Heavy Wash", "Fragrance Pack"],
-    tag_text: "Anti-Bacterial · Vacuum Pack",
-    customer_note: "Ghar par wash karna mushkil tha, Balaji ne bohot badhiya safai ki.",
+    tags: ["Anti-Bacterial", "Deep Clean", "Fresh Scent"],
+    tag_text: "Anti-Bacterial · Vacuum Sealed",
+    customer_note: "Too heavy to wash at home, Balaji delivered wonderful cleanliness.",
     is_featured: false,
     is_active: true,
     display_order: 4,
@@ -105,14 +105,14 @@ const DEFAULT_WORKS: WorkItem[] = [
     title: "White Formal Shirt Tea & Ink Stain Removal",
     category: "Stain Removal",
     description:
-      "Collar par chai aur pen ki ink ka ziddi daag specialised spotting reagent se bina fabric kamzor kiye mitaya.",
+      "Stubborn collar tea and ink stains lifted using gentle spotting reagents without weakening delicate cotton fibers.",
     before_image:
       "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80",
     after_image:
       "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80",
-    tags: ["Spotting", "Ink Removal", "Tea Stain"],
-    tag_text: "Spotting Specialist · Daag Mukt",
-    customer_note: "Daag bilkul gayab ho gaya, collar bilkul safed!",
+    tags: ["Spotting Treatment", "Ink Removal", "Fabric Safe"],
+    tag_text: "Spotting Specialist · Spotless Finish",
+    customer_note: "The dark stains disappeared completely, collar looks bright white!",
     is_featured: true,
     is_active: true,
     display_order: 5,

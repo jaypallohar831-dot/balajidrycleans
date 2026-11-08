@@ -21,9 +21,9 @@ import { siteConfig, getWhatsAppLink } from "@/config/site";
 import { Turnstile, type TurnstileRef } from "@/components/Turnstile";
 
 const TIME_SLOTS = [
-  { id: "subah", label: "Subah", time: "9 AM - 12 PM" },
-  { id: "dopahar", label: "Dopahar", time: "12 PM - 4 PM" },
-  { id: "shaam", label: "Shaam", time: "4 PM - 8 PM" },
+  { id: "subah", label: "Morning", time: "9 AM - 12 PM" },
+  { id: "dopahar", label: "Afternoon", time: "12 PM - 4 PM" },
+  { id: "shaam", label: "Evening", time: "4 PM - 8 PM" },
 ] as const;
 
 function getTodayString(): string {
@@ -96,14 +96,14 @@ export function PickupBooking() {
     TIME_SLOTS.find((s) => s.id === pickupSlot) || TIME_SLOTS[0];
 
   // Live WhatsApp message preview
-  const composedMessage = `Namaste ${siteConfig.name}! Mujhe dry cleaning ke liye pickup book karna hai:
+  const composedMessage = `Hello ${siteConfig.name}! I would like to book a doorstep pickup for dry cleaning:
 
-👤 Naam: ${name.trim() || "[Aapka Naam]"}
-📞 Phone: ${phone.trim() || "[Aapka Phone]"}
+👤 Name: ${name.trim() || "[Your Name]"}
+📞 Phone: ${phone.trim() || "[Your Phone]"}
 🧺 Service: ${selectedServiceObj.title}
 📅 Pickup Date: ${pickupDate || "[Date]"}
-⏰ Pickup Samay: ${selectedSlotObj.label} (${selectedSlotObj.time})
-📍 Address: ${address.trim() || "[Aapka Address, RK Colony]"}`;
+⏰ Pickup Slot: ${selectedSlotObj.label} (${selectedSlotObj.time})
+📍 Address: ${address.trim() || "[Your Address, RK Colony]"}`;
 
   const validate = () => {
     const newErrors: {
@@ -114,26 +114,26 @@ export function PickupBooking() {
     } = {};
 
     if (!name.trim()) {
-      newErrors.name = "Kripya apna naam batayein";
+      newErrors.name = "Please enter your full name";
     } else if (name.trim().length < 2) {
-      newErrors.name = "Naam kam se kam 2 akshar ka hona chahiye";
+      newErrors.name = "Name must be at least 2 characters";
     }
 
     const cleanPhone = phone.replace(/[\s\-().]/g, "");
     if (!cleanPhone) {
-      newErrors.phone = "Phone number daalna zaroori hai";
+      newErrors.phone = "Phone number is required";
     } else if (!/^(?:\+?91|0)?([6-9]\d{9})$/.test(cleanPhone)) {
-      newErrors.phone = "Sahi 10-digit Indian mobile number daalein";
+      newErrors.phone = "Please enter a valid 10-digit Indian mobile number";
     }
 
     if (!pickupDate) {
-      newErrors.pickupDate = "Pickup date chunein";
+      newErrors.pickupDate = "Please select a pickup date";
     }
 
     if (!address.trim()) {
-      newErrors.address = "Kripya apna address ya landmark likhein";
+      newErrors.address = "Please enter your address or landmark";
     } else if (address.trim().length < 10) {
-      newErrors.address = "Address kam se kam 10 akshar ka hona chahiye (makaan no./landmark)";
+      newErrors.address = "Address must be at least 10 characters (House/Flat No., Street, Landmark)";
     }
 
     setErrors(newErrors);
@@ -173,7 +173,7 @@ export function PickupBooking() {
       if (!res.ok || !json.ok) {
         const errorMsg =
           json?.error?.message ||
-          "Kuch gadbad ho gayi. Kripya dubara try karein ya WhatsApp karein.";
+          "Something went wrong. Please try again or message us on WhatsApp.";
         setSubmitError(errorMsg);
         turnstileRef.current?.reset();
         return;
@@ -185,7 +185,7 @@ export function PickupBooking() {
         message: json.data.message,
       });
     } catch {
-      setSubmitError("Network issue hai. Kripya connection check karein ya direct WhatsApp karein.");
+      setSubmitError("Network error. Please check your connection or contact us directly on WhatsApp.");
       turnstileRef.current?.reset();
     } finally {
       setIsSubmitting(false);
@@ -245,7 +245,7 @@ export function PickupBooking() {
               transition={{ duration: 0.5, delay: 0.08 }}
               className="text-3.5xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
             >
-              Pickup book karein
+              Schedule a Doorstep Pickup
             </motion.h2>
 
             {/* Short Note */}
@@ -256,8 +256,7 @@ export function PickupBooking() {
               transition={{ duration: 0.5, delay: 0.16 }}
               className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed"
             >
-              Aapko dukaan aane ki zaroorat nahi. Bas form bhariye, hum auto-booking
-              code generate karenge aur aapke ghar se kapde collect kar lenge.
+              No need to visit our store in person. Simply fill in your details, receive an instant booking reference code, and our team will collect your garments from your doorstep.
             </motion.p>
 
             {/* Feature Perks List */}
@@ -277,7 +276,7 @@ export function PickupBooking() {
                     Area Coverage
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-                    RK Colony, Subhash Nagar, Azad Nagar aur aas-paas ke sabhi areas.
+                    RK Colony, Subhash Nagar, Azad Nagar, and all surrounding areas in Bhilwara.
                   </p>
                 </div>
               </div>
@@ -291,7 +290,7 @@ export function PickupBooking() {
                     Same-Day Pickup
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-                    Subah slot book karein aur dopahar ya shaam ko doorstep pickup paayein.
+                    Book a morning slot and get doorstep collection the very same afternoon or evening.
                   </p>
                 </div>
               </div>
@@ -302,10 +301,10 @@ export function PickupBooking() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#0B2540]">
-                    Hygienic Poly Packaging
+                    Hygienic Protective Packaging
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-                    Ghar wapsi par har kapda hanger aur dust-free cover mein milega.
+                    Every cleaned garment is delivered on a premium hanger with sealed dust-proof garment bags.
                   </p>
                 </div>
               </div>
@@ -348,7 +347,7 @@ export function PickupBooking() {
                   </span>
 
                   <h3 className="text-2xl sm:text-3xl font-black text-[#0B2540]">
-                    Booking Confirm Ho Gayi!
+                    Booking Confirmed!
                   </h3>
 
                   {/* Booking Code Card */}
@@ -376,28 +375,28 @@ export function PickupBooking() {
                   </div>
 
                   <p className="text-slate-600 text-xs sm:text-sm max-w-sm mb-6 leading-relaxed">
-                    Aapki pickup request note ho gayi hai. Niche click karke Balaji Dry Cleaners ke WhatsApp par booking code bhejkar instant confirmation paayein.
+                    Your pickup request has been saved. Click below to share your booking reference code directly with Balaji Dry Cleaners on WhatsApp for instant confirmation.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
                     <a
                       href={getWhatsAppLink(
-                        `Namaste Balaji Dry Cleaners! Maine website se pickup book ki hai. Meri Booking ID: ${bookingSuccess.bookingCode} hai.`
+                        `Hello Balaji Dry Cleaners! I have booked a doorstep pickup via the website. My Booking Reference Code is: ${bookingSuccess.bookingCode}.`
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 py-3 px-5 min-h-[48px] rounded-full font-bold text-sm text-white bg-[#25D366] hover:bg-[#20bd5a] transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
                     >
                       <MessageCircle className="w-4 h-4 fill-white" />
-                      <span>WhatsApp par confirm karein</span>
+                      <span>Confirm on WhatsApp</span>
                     </a>
 
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="py-3 px-5 min-h-[48px] rounded-full text-xs sm:text-sm font-semibold text-[#0B2540] bg-slate-100 hover:bg-slate-200 transition-colors inline-flex items-center justify-center"
+                      className="py-3 px-5 min-h-[48px] rounded-full text-xs sm:text-sm font-semibold text-[#0B2540] bg-slate-100 hover:bg-slate-200 transition-colors inline-flex items-center justify-center cursor-pointer"
                     >
-                      Ek aur booking karein
+                      Book Another Pickup
                     </button>
                   </div>
                 </motion.div>
@@ -441,13 +440,13 @@ export function PickupBooking() {
                     className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                   >
                     <User className="w-3.5 h-3.5 text-[#38A8F5]" />
-                    <span>Aapka Naam</span>
+                    <span>Full Name</span>
                     <span className="text-red-500">*</span>
                   </label>
                   <input
                     id="pickup-name"
                     type="text"
-                    placeholder="Jaise: Rajesh Sharma"
+                    placeholder="e.g. Rajesh Sharma"
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -481,7 +480,7 @@ export function PickupBooking() {
                   <input
                     id="pickup-phone"
                     type="tel"
-                    placeholder="Jaise: 9829012345"
+                    placeholder="e.g. 9829012345"
                     value={phone}
                     onChange={(e) => {
                       setPhone(e.target.value);
@@ -510,7 +509,7 @@ export function PickupBooking() {
                   className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-[#38A8F5]" />
-                  <span>Service Chunein</span>
+                  <span>Select Service</span>
                   <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -541,7 +540,7 @@ export function PickupBooking() {
                   className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                 >
                   <Calendar className="w-3.5 h-3.5 text-[#38A8F5]" />
-                  <span>Pickup ki Taarikh</span>
+                  <span>Pickup Date</span>
                   <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -574,7 +573,7 @@ export function PickupBooking() {
               <div className="flex flex-col gap-2">
                 <label className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-[#38A8F5]" />
-                  <span>Pickup ka Samay</span>
+                  <span>Pickup Time Slot</span>
                   <span className="text-red-500">*</span>
                 </label>
                 <div className="grid grid-cols-3 gap-1.5 sm:gap-3">
@@ -614,13 +613,13 @@ export function PickupBooking() {
                   className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                 >
                   <MapPin className="w-3.5 h-3.5 text-[#38A8F5]" />
-                  <span>Aapka Address & Landmark</span>
+                  <span>Pickup Address & Landmark</span>
                   <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="pickup-address"
                   rows={2}
-                  placeholder="Makaan no., Gali, Landmark, RK Colony..."
+                  placeholder="House/Flat No., Street, Landmark, RK Colony..."
                   value={address}
                   onChange={(e) => {
                     setAddress(e.target.value);
@@ -662,12 +661,12 @@ export function PickupBooking() {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin text-[#38A8F5]" />
-                    <span>Booking record ho rahi hai...</span>
+                    <span>Confirming booking...</span>
                   </>
                 ) : (
                   <>
                     <Truck className="w-4 h-4 text-[#38A8F5] stroke-[2.2]" />
-                    <span>Pickup Book Karein</span>
+                    <span>Schedule Pickup</span>
                   </>
                 )}
               </button>

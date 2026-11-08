@@ -71,7 +71,7 @@ export function middleware(request: NextRequest) {
         ok: false,
         error: {
           code: "UNAUTHORIZED",
-          message: "Admin login zaroori hai. Kripya login karein.",
+          message: "Admin login is required. Please sign in.",
         },
       },
       { status: 401 }

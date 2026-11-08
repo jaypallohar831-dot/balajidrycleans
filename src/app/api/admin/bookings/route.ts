@@ -12,7 +12,7 @@ import { ok, fail } from "@/lib/response";
 export async function GET(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   const { searchParams } = request.nextUrl;
@@ -138,6 +138,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (err: any) {
     console.error("[AdminBookings:EXCEPTION]", err);
-    return fail("SERVER_ERROR", "Bookings fetch karne mein samasya aayi.", 500);
+    return fail("SERVER_ERROR", "Failed to retrieve bookings.", 500);
   }
 }

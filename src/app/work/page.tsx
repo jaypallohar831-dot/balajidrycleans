@@ -81,17 +81,15 @@ export default function WorkShowcasePage() {
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#6EC0F8] text-xs font-bold mb-4 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#38A8F5]" />
-            <span>Balaji Dry Cleaners · Live Results</span>
+            <span>Balaji Dry Cleaners · Proven Results</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-            Hamara Kaam · <span className="text-[#38A8F5]">Before & After</span>
+            Our Work · <span className="text-[#38A8F5]">Before & After</span>
           </h1>
 
           <p className="mt-4 text-sm sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed">
-            Dekhein hamari safai, delicate fabric care aur steam finishing ka live
-            result. Wedding wear se lekar heavy blankets tak, har kapde par 100%
-            quality guarantee.
+            Explore our actual garment transformations, delicate stain removal, and Italian steam finishing results. From designer wedding wear to heavy quilts, every piece is handled with extreme care.
           </p>
 
           {/* Quick Stats Pills */}
@@ -129,7 +127,7 @@ export default function WorkShowcasePage() {
                       : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
                   }`}
                 >
-                  {cat === "all" ? `Sabhi Work (${works.length})` : cat}
+                  {cat === "all" ? `All Work (${works.length})` : cat}
                 </button>
               );
             })}
@@ -142,23 +140,23 @@ export default function WorkShowcasePage() {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-slate-400">
             <div className="w-10 h-10 border-4 border-[#1278BF] border-t-transparent rounded-full animate-spin mb-3" />
-            <p className="text-sm font-semibold">Work showcase load ho raha hai...</p>
+            <p className="text-sm font-semibold">Loading showcase gallery...</p>
           </div>
         ) : filteredWorks.length === 0 ? (
           <div className="py-20 text-center bg-white rounded-3xl border border-dashed border-slate-300 p-8">
             <Sparkles className="w-10 h-10 text-slate-400 mx-auto mb-3" />
             <h3 className="text-lg font-bold text-slate-800">
-              Is category mein abhi koi work nahi hai.
+              No work items found in this category.
             </h3>
             <p className="text-sm text-slate-500 mt-1">
-              Jald hi nayi photos update hongi. Dusri category check karein.
+              New photos will be uploaded soon. Please explore our other categories.
             </p>
             <button
               type="button"
               onClick={() => setSelectedCategory("all")}
-              className="mt-4 px-4 py-2 rounded-xl bg-[#1278BF] text-white text-sm font-bold"
+              className="mt-4 px-4 py-2 rounded-xl bg-[#1278BF] text-white text-sm font-bold cursor-pointer"
             >
-              Sabhi Work Dekhein
+              View All Work
             </button>
           </div>
         ) : (
@@ -170,7 +168,7 @@ export default function WorkShowcasePage() {
                   ? item.before_image
                   : item.after_image;
 
-              const whatsappInquiryText = `Namaste Balaji Dry Cleaners! Maine aapki website par "${item.title}" ka result dekha. Mujhe bhi aisa dry cleaning kaam karwana hai. Kripya details aur pickup ki jaankari dein.`;
+              const whatsappInquiryText = `Hello Balaji Dry Cleaners! I saw your showcase for "${item.title}" on the website. I would like to get similar dry cleaning done. Please share pickup details and pricing.`;
               const itemWaUrl = getWhatsAppLink(whatsappInquiryText);
 
               return (
@@ -210,7 +208,7 @@ export default function WorkShowcasePage() {
                           })
                         }
                         className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center transition-transform hover:scale-110 z-10 cursor-pointer"
-                        title="Bada karke dekhein"
+                        title="View Fullscreen"
                       >
                         <Maximize2 className="w-3.5 h-3.5" />
                       </button>
@@ -228,7 +226,7 @@ export default function WorkShowcasePage() {
                                   : "text-slate-300 hover:text-white"
                               }`}
                             >
-                              BEFORE (Pehle)
+                              BEFORE
                             </button>
                             <button
                               type="button"
@@ -239,7 +237,7 @@ export default function WorkShowcasePage() {
                                   : "text-slate-300 hover:text-white"
                               }`}
                             >
-                              AFTER (Naya)
+                              AFTER
                             </button>
                           </div>
 
@@ -292,7 +290,7 @@ export default function WorkShowcasePage() {
                       className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-xs transition-all hover:scale-[1.01]"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>Aisa Kaam Karwayein (WhatsApp)</span>
+                      <span>Book Similar Service (WhatsApp)</span>
                     </a>
 
                     <Link
@@ -300,7 +298,7 @@ export default function WorkShowcasePage() {
                       className="w-full py-2 px-4 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
                     >
                       <CalendarCheck className="w-3.5 h-3.5 text-[#1278BF]" />
-                      <span>Pickup Book Karein</span>
+                      <span>Schedule Pickup</span>
                     </Link>
                   </div>
                 </div>
@@ -313,22 +311,20 @@ export default function WorkShowcasePage() {
         <div className="mt-16 p-6 sm:p-10 rounded-3xl bg-gradient-to-r from-[#0B2540] to-[#123A63] text-white shadow-xl relative overflow-hidden">
           <div className="relative z-10 max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-wider text-[#38A8F5]">
-              Bhilwara Ka No. 1 Dry Cleaner
+              Bhilwara&apos;s Trusted Garment Care
             </span>
             <h3 className="text-2xl sm:text-3xl font-black mt-1">
-              Aapke Mehnge Kapde Hamare Saath Surakshit Hain
+              Your Valuable Garments Are Safe With Us
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Zari sarees, Italian blazers, ya delicate lehengas — hum har kapde ki
-              fabric sensitivity samajhkar customised spotting aur steam pressing
-              karte hain.
+              From pure silk sarees to Italian blazers and designer bridal wear — our gentle spotting techniques and industrial steam press ensure pristine results without fabric stress.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
                 href="/#pickup"
                 className="px-5 py-2.5 rounded-xl bg-[#38A8F5] hover:bg-[#2094E3] text-[#0B2540] text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-105 inline-flex items-center gap-2"
               >
-                <span>Free Doorstep Pickup Book Karein</span>
+                <span>Book Doorstep Pickup</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a

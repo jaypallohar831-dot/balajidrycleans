@@ -75,7 +75,7 @@ export default function AdminServicesPage() {
         setServices(json.data || []);
       }
     } catch {
-      setMessage({ text: "Services load karne mein samasya aayi.", type: "error" });
+      setMessage({ text: "Failed to load services.", type: "error" });
     } finally {
       setLoading(false);
     }
@@ -108,7 +108,7 @@ export default function AdminServicesPage() {
   const handleSaveService = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !description.trim()) {
-      setMessage({ text: "Title aur Description bharo.", type: "error" });
+      setMessage({ text: "Title and description are required.", type: "error" });
       return;
     }
 
@@ -126,13 +126,13 @@ export default function AdminServicesPage() {
             title,
             description,
             icon,
-            inquiry: inquiry || `Namaste Balaji Dry Cleaners! Mujhe ${title} dry clean karwana hai.`,
+            inquiry: inquiry || `Hello Balaji Dry Cleaners! I would like to get my ${title} dry cleaned.`,
             is_active: isActive,
           }),
         });
         const json = await res.json();
         if (json.ok) {
-          setMessage({ text: "Service safaltapoorvak update ho gayi!", type: "success" });
+          setMessage({ text: "Service updated successfully!", type: "success" });
           setIsModalOpen(false);
           fetchServices();
         } else {
@@ -147,14 +147,14 @@ export default function AdminServicesPage() {
             title,
             description,
             icon,
-            inquiry: inquiry || `Namaste Balaji Dry Cleaners! Mujhe ${title} dry clean karwana hai.`,
+            inquiry: inquiry || `Hello Balaji Dry Cleaners! I would like to get my ${title} dry cleaned.`,
             display_order: services.length + 1,
             is_active: isActive,
           }),
         });
         const json = await res.json();
         if (json.ok) {
-          setMessage({ text: "Nayi service add ho gayi!", type: "success" });
+          setMessage({ text: "New service added successfully!", type: "success" });
           setIsModalOpen(false);
           fetchServices();
         } else {
@@ -162,7 +162,7 @@ export default function AdminServicesPage() {
         }
       }
     } catch {
-      setMessage({ text: "Network samasya aayi.", type: "error" });
+      setMessage({ text: "Network error occurred.", type: "error" });
     } finally {
       setActionLoading(false);
     }
@@ -185,12 +185,12 @@ export default function AdminServicesPage() {
           prev.map((s) => (s.id === service.id ? { ...s, is_active: !s.is_active } : s))
         );
         setMessage({
-          text: `Service '${service.title}' ab ${!service.is_active ? "Dikhayi degi (Active)" : "Chhupi hui (Hidden)"} hai.`,
+          text: `Service '${service.title}' is now ${!service.is_active ? "Active" : "Hidden"}.`,
           type: "success",
         });
       }
     } catch {
-      setMessage({ text: "Toggle karne mein samasya.", type: "error" });
+      setMessage({ text: "Failed to update service status.", type: "error" });
     } finally {
       setActionLoading(false);
     }
@@ -225,9 +225,9 @@ export default function AdminServicesPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ reorder: reorderPayload }),
       });
-      setMessage({ text: "Services ka kram (order) update ho gaya!", type: "success" });
+      setMessage({ text: "Service display order updated!", type: "success" });
     } catch {
-      setMessage({ text: "Reorder save karne mein samasya.", type: "error" });
+      setMessage({ text: "Failed to save reordered services.", type: "error" });
       fetchServices();
     } finally {
       setActionLoading(false);
@@ -293,7 +293,7 @@ export default function AdminServicesPage() {
           <div className="p-12 text-center flex flex-col items-center justify-center">
             <Loader2 className="w-8 h-8 text-[#38A8F5] animate-spin mb-3" />
             <p className="text-xs sm:text-sm text-slate-500 font-medium">
-              Services load ho rahi hain...
+              Loading services...
             </p>
           </div>
         ) : services.length === 0 ? (
@@ -301,9 +301,9 @@ export default function AdminServicesPage() {
             <div className="w-12 h-12 rounded-2xl bg-sky-50 text-[#1278BF] flex items-center justify-center mb-3">
               <Sparkles className="w-6 h-6" />
             </div>
-            <h3 className="font-bold text-sm text-[#0B2540]">Koi service uplabdh nahi hai</h3>
+            <h3 className="font-bold text-sm text-[#0B2540]">No services available</h3>
             <p className="text-xs text-slate-400 mt-1 max-w-sm">
-              &quot;Nayi Service Jodein&quot; button par click karke shuru karein.
+              Click &quot;Add Service&quot; button to get started.
             </p>
           </div>
         ) : (
@@ -434,10 +434,10 @@ export default function AdminServicesPage() {
                   </div>
                   <div>
                     <h2 className="font-black text-[#0B2540] text-base">
-                      {editingService ? "Service Edit Karein" : "Nayi Service Jodein"}
+                      {editingService ? "Edit Service" : "Add New Service"}
                     </h2>
                     <p className="text-[11px] text-slate-400">
-                      Catalog mein services customer ke samne dikhayi dengi.
+                      Configure services displayed in the public website catalog.
                     </p>
                   </div>
                 </div>
@@ -454,7 +454,7 @@ export default function AdminServicesPage() {
                 {/* Title */}
                 <div>
                   <label className="text-xs font-bold text-slate-700 block mb-1">
-                    Service Ka Naam (Title) *
+                    Service Name (Title) *
                   </label>
                   <input
                     type="text"
@@ -469,12 +469,12 @@ export default function AdminServicesPage() {
                 {/* Description */}
                 <div>
                   <label className="text-xs font-bold text-slate-700 block mb-1">
-                    Description (Vivaran) *
+                    Description *
                   </label>
                   <textarea
                     required
                     rows={2}
-                    placeholder="e.g. Zari, resham aur embroidery ke liye gentle organic chemical wash."
+                    placeholder="e.g. Specialized solvent dry cleaning for delicate zari, embroidery, and silk fabrics."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#38A8F5] focus:bg-white text-slate-800"
@@ -484,7 +484,7 @@ export default function AdminServicesPage() {
                 {/* Icon Selection */}
                 <div>
                   <label className="text-xs font-bold text-slate-700 block mb-1.5">
-                    Icon Chuniye
+                    Select Icon
                   </label>
                   <div className="grid grid-cols-4 gap-2">
                     {AVAILABLE_ICONS.map((item) => {
@@ -516,13 +516,13 @@ export default function AdminServicesPage() {
                   </label>
                   <input
                     type="text"
-                    placeholder="Namaste Balaji Dry Cleaners! Mujhe service chahiye."
+                    placeholder="Hello Balaji Dry Cleaners! I would like to inquire about this service."
                     value={inquiry}
                     onChange={(e) => setInquiry(e.target.value)}
                     className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#38A8F5] focus:bg-white text-slate-800 placeholder-slate-400"
                   />
                   <p className="text-[11px] text-slate-400 mt-1">
-                    Jab customer is service par click karega toh WhatsApp par yeh prefilled text aayega.
+                    When a customer clicks inquiry on this service, this text will prefill in their WhatsApp.
                   </p>
                 </div>
 
@@ -536,7 +536,7 @@ export default function AdminServicesPage() {
                     className="w-4 h-4 text-[#38A8F5] rounded border-slate-300 focus:ring-[#38A8F5]"
                   />
                   <label htmlFor="isActiveCheckbox" className="text-xs font-bold text-slate-700">
-                    Website par dikhayein (Active on site)
+                    Visible on website (Active)
                   </label>
                 </div>
 
@@ -555,7 +555,7 @@ export default function AdminServicesPage() {
                     className="px-5 py-2.5 bg-[#38A8F5] text-[#0B2540] rounded-xl text-xs sm:text-sm font-bold hover:bg-[#2094E6] transition-colors flex items-center gap-1.5 shadow-sm"
                   >
                     {actionLoading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-                    <span>{editingService ? "Changes Save Karein" : "Service Add Karein"}</span>
+                    <span>{editingService ? "Save Changes" : "Add Service"}</span>
                   </button>
                 </div>
               </form>

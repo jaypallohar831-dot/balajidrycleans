@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     try {
       body = await request.json();
     } catch {
-      return ERRORS.VALIDATION("Request body sahi JSON hona chahiye.");
+      return ERRORS.VALIDATION("Request body must be valid JSON.");
     }
 
     // ── Validate with Zod ───────────────────────────────
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
       {
         id: bookingId,
         bookingCode,
-        message: `Booking ${bookingCode} confirm ho gayi! Hum jaldi pickup karenge.`,
+        message: `Booking ${bookingCode} confirmed! We will pick up your garments soon.`,
       },
       201
     );

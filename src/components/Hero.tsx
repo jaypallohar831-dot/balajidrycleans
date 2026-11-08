@@ -60,7 +60,7 @@ const BUBBLES = [
 export function Hero() {
   const prefersReduced = useReducedMotion();
 
-  const headlineWords = ["Kapde", "wahi,", "chamak", "nayi."];
+  const headlineWords = ["Same", "clothes,", "fresh", "new", "shine."];
 
   const handleScrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -76,7 +76,7 @@ export function Hero() {
   };
 
   const whatsappUrl = getWhatsAppLink(
-    `Namaste ${siteConfig.name}! Mujhe dry cleaning ke liye pickup book karna hai.`
+    `Hello ${siteConfig.name}! I would like to book a doorstep dry cleaning pickup.`
   );
 
   return (
@@ -280,16 +280,15 @@ export function Hero() {
               ))}
             </h1>
 
-            {/* 2-Line Hinglish Subtext */}
+            {/* 2-Line Subtext */}
             <motion.p
               initial={prefersReduced ? false : { opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
               className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed"
             >
-              Bhilwara ki sabse bharosemand dry cleaning service. Aapke mehnge
-              kapdo ko mile spotless chamak, taazgi aur expert care — bilkul time
-              par.
+              Bhilwara&apos;s trusted dry cleaning and laundry specialists. Spotless shine,
+              delicate fabric preservation, and reliable doorstep service in RK Colony.
             </motion.p>
 
             {/* Action Buttons */}
@@ -299,7 +298,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.72 }}
               className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto"
             >
-              {/* Primary Dark Pill Button: Pickup book karein */}
+              {/* Primary Dark Pill Button: Book Pickup */}
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -307,16 +306,16 @@ export function Hero() {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base text-white bg-[#0B2540] hover:bg-[#163A5C] active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg min-h-[48px]"
               >
                 <MessageCircle className="w-4 h-4 fill-white/20 stroke-[2.2]" />
-                <span>Pickup book karein</span>
+                <span>Book Doorstep Pickup</span>
               </a>
 
-              {/* Secondary Button: Services dekhein */}
+              {/* Secondary Button: Explore Services */}
               <a
                 href="#services"
                 onClick={handleScrollToServices}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base text-[#0B2540] bg-white/90 hover:bg-white border-2 border-[#38A8F5] active:scale-95 transition-all duration-200 shadow-sm hover:shadow min-h-[48px]"
               >
-                <span>Services dekhein</span>
+                <span>Explore Services</span>
                 <ArrowDown className="w-4 h-4 text-[#38A8F5]" />
               </a>
             </motion.div>

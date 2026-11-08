@@ -58,16 +58,16 @@ export function isValidPickupDate(v: string): boolean {
 // Honeypot allows any string; if filled, route will silently succeed with 200
 const honeypotField = z.string().optional().default("");
 
-const turnstileField = z.string().min(1, "Turnstile token zaroori hai.");
+const turnstileField = z.string().min(1, "Turnstile verification token is required.");
 
 const phoneField = cleanStr.pipe(
   z
     .string()
-    .min(10, "Phone number sahi format mein daalein.")
-    .max(20, "Phone number sahi format mein daalein.")
+    .min(10, "Please enter a valid phone number.")
+    .max(20, "Please enter a valid phone number.")
     .transform((v) => normalisePhone(v))
     .refine((v) => v.length > 0, {
-      message: "Sahi 10-digit Indian phone number daalein (jaise: 9876543210).",
+      message: "Please enter a valid 10-digit Indian phone number (e.g. 9876543210).",
     })
 );
 
@@ -77,15 +77,15 @@ export const inquirySchema = z.object({
   name: cleanStr.pipe(
     z
       .string()
-      .min(2, "Naam kam se kam 2 akshar ka hona chahiye.")
-      .max(60, "Naam 60 akshar se chhota hona chahiye.")
+      .min(2, "Name must be at least 2 characters.")
+      .max(60, "Name must be under 60 characters.")
   ),
   phone: phoneField,
   message: cleanStr
-    .pipe(z.string().max(500, "Message 500 akshar se chhota hona chahiye."))
+    .pipe(z.string().max(500, "Message must be under 500 characters."))
     .optional()
     .default(""),
-  email: z.string().email("Sahi email address daalein.").optional().or(z.literal("")).default(""),
+  email: z.string().email("Please enter a valid email address.").optional().or(z.literal("")).default(""),
   turnstileToken: turnstileField,
   honeypot: honeypotField,
 });
@@ -107,32 +107,32 @@ export const bookingSchema = z.object({
   name: cleanStr.pipe(
     z
       .string()
-      .min(2, "Naam kam se kam 2 akshar ka hona chahiye.")
-      .max(60, "Naam 60 akshar se chhota hona chahiye.")
+      .min(2, "Name must be at least 2 characters.")
+      .max(60, "Name must be under 60 characters.")
   ),
   phone: phoneField,
-  email: z.string().email("Sahi email address daalein.").optional().or(z.literal("")).default(""),
+  email: z.string().email("Please enter a valid email address.").optional().or(z.literal("")).default(""),
   service: cleanStr.pipe(
     z.enum(VALID_SERVICES, {
-      error: "Sahi service select karein.",
+      error: "Please select a valid service.",
     })
   ),
   pickupSlot: z.enum(["subah", "dopahar", "shaam"], {
-    error: "Pickup time select karein: Subah, Dopahar ya Shaam.",
+    error: "Please select a valid pickup time slot: Morning, Afternoon, or Evening.",
   }),
   pickupDate: cleanStr.pipe(
     z.string().refine((v) => isValidPickupDate(v), {
-      message: "Pickup date aaj ya aane wale 30 din ke andar honi chahiye.",
+      message: "Pickup date must be today or within the next 30 days.",
     })
   ),
   address: cleanStr.pipe(
     z
       .string()
-      .min(10, "Address kam se kam 10 akshar ka hona chahiye.")
-      .max(300, "Address 300 akshar se chhota hona chahiye.")
+      .min(10, "Address must be at least 10 characters.")
+      .max(300, "Address must be under 300 characters.")
   ),
   notes: cleanStr
-    .pipe(z.string().max(500, "Notes 500 akshar se chhota hona chahiye."))
+    .pipe(z.string().max(500, "Notes must be under 500 characters."))
     .optional()
     .default(""),
   turnstileToken: turnstileField,

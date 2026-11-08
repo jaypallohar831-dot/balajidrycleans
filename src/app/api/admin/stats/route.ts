@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
   // Re-check admin on the server
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   const isMock =
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
         {
           id: "act-1",
           type: "booking",
-          title: "Nayi Booking: BDC-5926",
+          title: "New Booking: BDC-5926",
           subtitle: "Aakash Mehta · Suit / Blazer / Sherwani",
           status: "pending",
           created_at: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
         {
           id: "act-2",
           type: "inquiry",
-          title: "Nayi Inquiry",
+          title: "New Customer Inquiry",
           subtitle: "Priya Sharma · Lehenga cleaning inquiry",
           status: "new",
           created_at: new Date(Date.now() - 45 * 60 * 1000).toISOString(),
@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
           id: "act-3",
           type: "booking",
           title: "Pickup Complete: BDC-4421",
-          subtitle: "Vikram Rathore · Rajai / Kambal",
+          subtitle: "Vikram Rathore · Quilts & Blankets",
           status: "picked_up",
           created_at: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
         },
@@ -111,6 +111,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (err: any) {
     console.error("[AdminStats:ERROR]", err);
-    return fail("SERVER_ERROR", "Dashboard stats fetch karne mein samasya.", 500);
+    return fail("SERVER_ERROR", "Failed to retrieve dashboard stats.", 500);
   }
 }

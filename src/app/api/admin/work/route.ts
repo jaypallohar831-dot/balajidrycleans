@@ -21,7 +21,7 @@ import { ok, fail } from "@/lib/response";
 export async function GET(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   try {
@@ -37,14 +37,14 @@ export async function GET(request: NextRequest) {
     return ok({ items, stats });
   } catch (err: unknown) {
     console.error("[AdminWork:GET_ERROR]", err);
-    return fail("SERVER_ERROR", "Work items fetch nahi ho paye.", 500);
+    return fail("SERVER_ERROR", "Failed to retrieve work items.", 500);
   }
 }
 
 export async function POST(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   try {
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     if (!title || !after_image) {
       return fail(
         "VALIDATION_ERROR",
-        "Title aur After Photo zaroori hain.",
+        "Title and After Photo are required.",
         422
       );
     }
@@ -86,14 +86,14 @@ export async function POST(request: NextRequest) {
     return ok(created, 201);
   } catch (err: unknown) {
     console.error("[AdminWork:POST_ERROR]", err);
-    return fail("SERVER_ERROR", "Work project add karne mein samasya aayi.", 500);
+    return fail("SERVER_ERROR", "Failed to add work project.", 500);
   }
 }
 
 export async function PUT(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   try {
@@ -101,25 +101,25 @@ export async function PUT(request: NextRequest) {
     const { id, ...updates } = body;
 
     if (!id) {
-      return fail("VALIDATION_ERROR", "Work ID zaroori hai.", 422);
+      return fail("VALIDATION_ERROR", "Work item ID is required.", 422);
     }
 
     const updated = await updateWorkItem(id, updates);
     if (!updated) {
-      return fail("NOT_FOUND", "Yeh work project nahi mila.", 404);
+      return fail("NOT_FOUND", "Work project not found.", 404);
     }
 
     return ok(updated);
   } catch (err: unknown) {
     console.error("[AdminWork:PUT_ERROR]", err);
-    return fail("SERVER_ERROR", "Work project update nahi ho saka.", 500);
+    return fail("SERVER_ERROR", "Failed to update work project.", 500);
   }
 }
 
 export async function DELETE(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   try {
@@ -127,18 +127,17 @@ export async function DELETE(request: NextRequest) {
     const id = searchParams.get("id");
 
     if (!id) {
-      return fail("VALIDATION_ERROR", "ID zaroori hai.", 422);
+      return fail("VALIDATION_ERROR", "Work ID is required.", 422);
     }
 
     const success = await deleteWorkItem(id);
     if (!success) {
-      return fail("NOT_FOUND", "Work project delete nahi ho paya.", 404);
+      return fail("NOT_FOUND", "Failed to delete work project.", 404);
     }
 
-    return ok({ message: "Work project safaltapoorvak delete ho gaya." });
+    return ok({ message: "Work project deleted successfully." });
   } catch (err: unknown) {
     console.error("[AdminWork:DELETE_ERROR]", err);
-    return fail("SERVER_ERROR", "Work project delete karne mein samasya aayi.", 500);
+    return fail("SERVER_ERROR", "Failed to delete work project.", 500);
   }
 }
-

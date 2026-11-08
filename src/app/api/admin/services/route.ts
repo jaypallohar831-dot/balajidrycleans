@@ -13,7 +13,7 @@ import { siteConfig } from "@/config/site";
 export async function GET(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   const isMock =
@@ -59,14 +59,14 @@ export async function GET(request: NextRequest) {
     return ok(data);
   } catch (err: any) {
     console.error("[AdminServices:GET_ERROR]", err);
-    return fail("SERVER_ERROR", "Services fetch karne mein samasya.", 500);
+    return fail("SERVER_ERROR", "Failed to retrieve services.", 500);
   }
 }
 
 export async function POST(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   try {
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
     const { id, title, description, icon, inquiry, display_order, is_active } = body;
 
     if (!title || !description) {
-      return fail("VALIDATION_ERROR", "Title aur description zaroori hain.", 422);
+      return fail("VALIDATION_ERROR", "Title and description are required.", 422);
     }
 
     const serviceId =
@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
         title,
         description,
         icon: icon || "Sparkles",
-        inquiry: inquiry || `Namaste Balaji Dry Cleaners! Mujhe ${title} dry clean karwana hai.`,
+        inquiry: inquiry || `Hello Balaji Dry Cleaners! I would like to get my ${title} dry cleaned.`,
         display_order: display_order || 99,
         is_active: is_active !== false,
       }, 201);
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
         title,
         description,
         icon: icon || "Sparkles",
-        inquiry: inquiry || `Namaste Balaji Dry Cleaners! Mujhe ${title} dry clean karwana hai.`,
+        inquiry: inquiry || `Hello Balaji Dry Cleaners! I would like to get my ${title} dry cleaned.`,
         display_order: display_order || 99,
         is_active: is_active !== false,
       })
@@ -123,14 +123,14 @@ export async function POST(request: NextRequest) {
     return ok(data, 201);
   } catch (err: any) {
     console.error("[AdminServices:POST_EXCEPTION]", err);
-    return fail("SERVER_ERROR", "Nayi service create karne mein samasya.", 500);
+    return fail("SERVER_ERROR", "Failed to create new service.", 500);
   }
 }
 
 export async function PATCH(request: NextRequest) {
   const admin = await getAuthenticatedAdmin(request);
   if (!admin) {
-    return fail("UNAUTHORIZED", "Admin login zaroori hai.", 401);
+    return fail("UNAUTHORIZED", "Admin authorization required.", 401);
   }
 
   try {
@@ -142,7 +142,7 @@ export async function PATCH(request: NextRequest) {
       process.env.NEXT_PUBLIC_SUPABASE_URL.includes("YOUR_PROJECT");
 
     if (isMock) {
-      return ok({ message: "Services update ho gayi!" });
+      return ok({ message: "Services updated successfully!" });
     }
 
     const db = getServiceClient();
@@ -155,11 +155,11 @@ export async function PATCH(request: NextRequest) {
           .update({ display_order: item.display_order })
           .eq("id", item.id);
       }
-      return ok({ message: "Services reorder ho gayi!" });
+      return ok({ message: "Services reordered successfully!" });
     }
 
     if (!id) {
-      return fail("VALIDATION_ERROR", "Service ID zaroori hai.", 422);
+      return fail("VALIDATION_ERROR", "Service ID is required.", 422);
     }
 
     const updates: Record<string, any> = {};
@@ -185,6 +185,6 @@ export async function PATCH(request: NextRequest) {
     return ok(data);
   } catch (err: any) {
     console.error("[AdminServices:PATCH_EXCEPTION]", err);
-    return fail("SERVER_ERROR", "Service update karne mein samasya.", 500);
+    return fail("SERVER_ERROR", "Failed to update service.", 500);
   }
 }

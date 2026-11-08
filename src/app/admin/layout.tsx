@@ -93,7 +93,7 @@ export default function AdminLayout({
             className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
           >
             <ExternalLink className="w-3.5 h-3.5" />
-            <span>Website dekhein</span>
+            <span>View Website</span>
           </Link>
 
           <button
@@ -102,7 +102,7 @@ export default function AdminLayout({
             className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs text-red-300 hover:text-red-100 hover:bg-red-500/10 transition-colors w-full text-left cursor-pointer"
           >
             <LogOut className="w-3.5 h-3.5" />
-            <span>Logout karein</span>
+            <span>Sign Out</span>
           </button>
 
           {/* Ampledia Developer Link */}

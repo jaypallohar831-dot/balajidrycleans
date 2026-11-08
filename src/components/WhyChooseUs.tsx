@@ -6,27 +6,27 @@ import { Sparkles, Wind, Tag, ShieldCheck } from "lucide-react";
 const REASONS = [
   {
     icon: Sparkles,
-    title: "Zari and embroidery ka dhyan",
+    title: "Delicate Zari & Embroidery Care",
     description:
-      "Bridal lehengas, silk sarees aur designer wear par special solvent care — bina kisi dhaage, stone ya chamak ke nuksan ke.",
+      "Specialized solvent care for bridal lehengas, pure silk sarees, and designer outfits — ensuring zero damage to threads, sequins, or fabric luster.",
   },
   {
     icon: Wind,
-    title: "Steam press",
+    title: "Industrial Steam Press",
     description:
-      "Industrial steam equipment aur vacuum tables se gentle wrinkle-free press, jo fabric ki original softness aur fall barkarar rakhe.",
+      "Advanced industrial steam equipment and vacuum tables providing a gentle, wrinkle-free finish that preserves natural fabric softness and drape.",
   },
   {
     icon: Tag,
-    title: "Har kapde par tag",
+    title: "Individual Barcode Tagging",
     description:
-      "Aapke har ek kapde par barcode tagging aur careful inventory mapping, taaki kapde mix na ho aur buttons-accessories 100% surakshit rahein.",
+      "Every single garment is barcoded and inventoried individually, ensuring zero mix-ups while keeping delicate buttons and embellishments safe.",
   },
   {
     icon: ShieldCheck,
-    title: "Local aur bharosemand",
+    title: "Local & Trusted in Bhilwara",
     description:
-      "RK Colony, Bhilwara ke apne trusted dry cleaners. Clear pricing, timely commitment aur har kapde ke liye apnepan jaisi care.",
+      "RK Colony's proven dry cleaning experts with over 10 years of trust. Transparent pricing, strict on-time delivery, and personalized customer care.",
   },
 ];
 
@@ -76,7 +76,7 @@ export function WhyChooseUs() {
             className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#1278BF] bg-[#EBF6FE] rounded-full border border-[#D2ECFD] mb-3.5 shadow-xs"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-[#38A8F5]" />
-            <span>Khaas Wajah</span>
+            <span>Why Choose Us</span>
           </motion.div>
 
           <motion.h2
@@ -86,7 +86,7 @@ export function WhyChooseUs() {
             transition={{ duration: 0.5, delay: 0.08 }}
             className="text-3.5xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
           >
-            Kyun Balaji
+            Why Balaji Dry Cleaners
           </motion.h2>
 
           <motion.p
@@ -96,8 +96,7 @@ export function WhyChooseUs() {
             transition={{ duration: 0.5, delay: 0.16 }}
             className="mt-3.5 text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed"
           >
-            Hum jante hain ki har kapde ke sath aapki yaadein judi hoti hain. Isliye
-            hum har item ko wahi dhyan dete hain jo aap khud dete.
+            We understand that every garment carries special memories. That is why we treat every piece with the utmost care, precision, and respect.
           </motion.p>
         </div>
 

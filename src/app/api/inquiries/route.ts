@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     try {
       body = await request.json();
     } catch {
-      return ERRORS.VALIDATION("Request body sahi JSON hona chahiye.");
+      return ERRORS.VALIDATION("Request body must be valid JSON.");
     }
 
     // ── Validate with Zod ───────────────────────────────
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       return ok(
         {
           id: "inq_" + Math.random().toString(36).substring(2, 10),
-          message: "Inquiry mil gayi! Hum jaldi contact karenge.",
+          message: "Inquiry received! We will contact you shortly.",
         },
         201
       );
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
       return ERRORS.SERVER();
     }
 
-    return ok({ id: data.id, message: "Inquiry mil gayi! Hum jaldi contact karenge." }, 201);
+    return ok({ id: data.id, message: "Inquiry received! We will contact you shortly." }, 201);
   } catch (err) {
     console.error("Inquiry route error:", err);
     return ERRORS.SERVER();

@@ -30,10 +30,10 @@ interface Inquiry {
 }
 
 const STATUS_OPTIONS = [
-  { value: "all", label: "Sabhi Status" },
-  { value: "new", label: "Nayi (New)" },
-  { value: "contacted", label: "Sampark Kiya (Contacted)" },
-  { value: "closed", label: "Band (Closed)" },
+  { value: "all", label: "All Statuses" },
+  { value: "new", label: "New" },
+  { value: "contacted", label: "Contacted" },
+  { value: "closed", label: "Closed" },
 ];
 
 const STATUS_BADGES: Record<string, string> = {
@@ -119,7 +119,7 @@ export default function AdminInquiriesPage() {
       });
       const json = await res.json();
       if (json.ok) {
-        setUpdateMsg("Inquiry status safaltapoorvak badal gaya!");
+        setUpdateMsg("Inquiry status updated successfully!");
         setSelectedInquiry({ ...selectedInquiry, status: targetStatus as any });
         // Update item in local list
         setInquiries((prev) =>
@@ -128,7 +128,7 @@ export default function AdminInquiriesPage() {
           )
         );
       } else {
-        setUpdateMsg(json?.error?.message || "Status badalne mein samasya aayi.");
+        setUpdateMsg(json?.error?.message || "Failed to update inquiry status.");
       }
     } catch {
       setUpdateMsg("Network error.");
@@ -149,7 +149,7 @@ export default function AdminInquiriesPage() {
     const raw = cleanPhone(inquiry.phone);
     const num = raw.startsWith("91") ? raw : `91${raw}`;
     const text = encodeURIComponent(
-      `Namaste ${inquiry.name} ji! Balaji Dry Cleaners Bhilwara se. Aapne website par inquiry bheji thi: "${inquiry.message}". Hum aapki kaise madad kar sakte hain?`
+      `Hello ${inquiry.name}! This is Balaji Dry Cleaners Bhilwara regarding your website inquiry: "${inquiry.message}". How may we assist you?`
     );
     return `https://wa.me/${num}?text=${text}`;
   };
@@ -166,7 +166,7 @@ export default function AdminInquiriesPage() {
             Customer Inquiries
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Website aur contact forms se aayi hui queries ko manage karein.
+            Manage customer queries received from website contact forms.
           </p>
         </div>
 
@@ -187,7 +187,7 @@ export default function AdminInquiriesPage() {
             <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
-              placeholder="Naam, phone number ya query search karein..."
+              placeholder="Search by name, phone, or message..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#38A8F5] focus:bg-white text-slate-800 placeholder-slate-400"
@@ -252,7 +252,7 @@ export default function AdminInquiriesPage() {
           <div className="p-12 text-center flex flex-col items-center justify-center">
             <Loader2 className="w-8 h-8 text-[#38A8F5] animate-spin mb-3" />
             <p className="text-xs sm:text-sm text-slate-500 font-medium">
-              Inquiries load ho rahi hain...
+              Loading inquiries...
             </p>
           </div>
         ) : inquiries.length === 0 ? (
@@ -260,9 +260,9 @@ export default function AdminInquiriesPage() {
             <div className="w-12 h-12 rounded-2xl bg-sky-50 text-[#1278BF] flex items-center justify-center mb-3">
               <MessageSquare className="w-6 h-6" />
             </div>
-            <h3 className="font-bold text-sm text-[#0B2540]">Koi inquiry nahi mili</h3>
+            <h3 className="font-bold text-sm text-[#0B2540]">No inquiries found</h3>
             <p className="text-xs text-slate-400 mt-1 max-w-sm">
-              Filters reset karein ya doosra search term try karein.
+              Reset your filters or try a different search keyword.
             </p>
           </div>
         ) : (
@@ -379,7 +379,7 @@ export default function AdminInquiriesPage() {
                   </div>
 
                   <p className="text-xs text-slate-600 line-clamp-2 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                    {inq.message || "Koi message nahi hai."}
+                    {inq.message || "No message provided."}
                   </p>
 
                   <div className="flex items-center justify-between pt-1">
@@ -508,7 +508,7 @@ export default function AdminInquiriesPage() {
                       className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-emerald-600 text-white rounded-xl text-xs font-bold hover:bg-emerald-700 transition-colors shadow-xs active:scale-95"
                     >
                       <Phone className="w-3.5 h-3.5" />
-                      <span>Call Karein</span>
+                      <span>Call Customer</span>
                     </a>
                     <a
                       href={getWhatsAppLink(selectedInquiry)}
@@ -525,10 +525,10 @@ export default function AdminInquiriesPage() {
                 {/* Customer Message */}
                 <div>
                   <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
-                    Customer Ka Message
+                    Customer Message
                   </label>
                   <div className="p-4 bg-white rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 leading-relaxed">
-                    {selectedInquiry.message || "Koi message text uplabdh nahi hai."}
+                    {selectedInquiry.message || "No message text provided."}
                   </div>
                 </div>
 
@@ -580,9 +580,9 @@ export default function AdminInquiriesPage() {
                 <button
                   type="button"
                   onClick={handleCloseDrawer}
-                  className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-xl text-xs font-bold hover:bg-slate-100 transition-colors"
+                  className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-xl text-xs font-bold hover:bg-slate-100 transition-colors cursor-pointer"
                 >
-                  Band Karein
+                  Close
                 </button>
                 <a
                   href={getWhatsAppLink(selectedInquiry)}

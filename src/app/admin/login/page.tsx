@@ -14,7 +14,7 @@ export default function AdminLoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) {
-      setError("Kripya apna admin email address likhein.");
+      setError("Please enter your admin email address.");
       return;
     }
 
@@ -32,17 +32,17 @@ export default function AdminLoginPage() {
       const json = await res.json();
 
       if (!res.ok || !json.ok) {
-        setError(json?.error?.message || "Login request fail ho gayi.");
+        setError(json?.error?.message || "Login request failed. Please try again.");
         return;
       }
 
-      setSuccessMsg(json?.data?.message || "Login safal raha!");
+      setSuccessMsg(json?.data?.message || "Login successful!");
       setTimeout(() => {
         router.push("/admin");
         router.refresh();
       }, 700);
     } catch {
-      setError("Network samasya aayi hai. Kripya dubara try karein.");
+      setError("A network error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -84,7 +84,7 @@ export default function AdminLoginPage() {
             Balaji Admin Login
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Keval authorized email addresses hi login kar sakte hain.
+            Only authorized administrator emails are permitted to sign in.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function AdminLoginPage() {
               id="admin-email"
               type="email"
               required
-              placeholder="Jaise: admin@example.com"
+              placeholder="e.g. admin@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50/60 px-4 text-sm sm:text-base text-slate-800 placeholder:text-slate-400 outline-none transition-all focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15"

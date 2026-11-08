@@ -93,8 +93,7 @@ export function Footer() {
             </a>
 
             <p className="mt-3.5 text-sm sm:text-base text-slate-300 max-w-sm leading-relaxed">
-              Bhilwara ke RK Colony mein aapki vishwasniya dry cleaning dukaan.
-              Har kapde ki behtareen care, bina kisi jhanjhat.
+              Bhilwara&apos;s trusted dry cleaning specialists in RK Colony. Premium care for every garment, completely hassle-free.
             </p>
 
             <div className="mt-5 flex items-center gap-2.5 text-xs sm:text-sm text-slate-300">
@@ -126,19 +125,19 @@ export function Footer() {
           {/* Connect & Timings */}
           <div className="md:col-span-4 flex flex-col items-start">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#A5D8FB] mb-4">
-              Sampark & Timings
+              Contact & Store Hours
             </h4>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Dukaan khulne ka samay:
+              Store Timings:
               <br />
               <strong className="text-white font-semibold">
-                Somwar se Ravivar: 9:00 AM - 8:30 PM
+                Monday to Sunday: 9:00 AM - 8:30 PM
               </strong>
             </p>
 
             <div className="mt-5 flex items-center gap-3">
               <a
-                href={getWhatsAppLink("Namaste Balaji Dry Cleaners!")}
+                href={getWhatsAppLink("Hello Balaji Dry Cleaners!")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
