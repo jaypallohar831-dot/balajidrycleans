@@ -122,6 +122,10 @@ const structuredDataSchema = {
       logo: `${baseUrl}/icon.svg`,
       telephone: `+${siteConfig.whatsapp}`,
       url: baseUrl,
+      sameAs: [
+        `https://www.instagram.com/${siteConfig.instagram}/`,
+        siteConfig.address.mapsUrl,
+      ],
       address: {
         "@type": "PostalAddress",
         streetAddress: siteConfig.address.full,
