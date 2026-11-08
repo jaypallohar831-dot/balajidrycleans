@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     canonical: baseUrl,
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google23330603835b00c2",
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
   },
   other: {

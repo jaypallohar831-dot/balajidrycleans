@@ -88,10 +88,10 @@ export function WinterBanner() {
   );
 
   return (
-    <section className="w-full px-3 sm:px-6 py-8 sm:py-12 max-w-[1240px] mx-auto">
+    <section className="w-full px-2.5 sm:px-6 py-4 sm:py-10 max-w-[1240px] mx-auto">
       <div
         ref={containerRef}
-        className="relative rounded-[32px] overflow-hidden bg-[#0B2540] text-white p-6 sm:p-10 md:p-14 border border-sky-400/20 shadow-elevated"
+        className="relative rounded-2xl sm:rounded-[32px] overflow-hidden bg-[#0B2540] text-white p-5 sm:p-10 md:p-14 border border-sky-400/20 shadow-elevated"
       >
         {/* Subtle Decorative Background Snowflake Grid Pattern */}
         <div
@@ -118,9 +118,9 @@ export function WinterBanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#A5D8FB] bg-white/10 rounded-full border border-white/15 backdrop-blur-md mb-4 sm:mb-5"
+            className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#A5D8FB] bg-white/10 rounded-full border border-white/15 backdrop-blur-md mb-2.5 sm:mb-4"
           >
-            <Snowflake className="w-4 h-4 text-[#6EC0F8] animate-spin-slow" />
+            <Snowflake className="w-3.5 h-3.5 text-[#6EC0F8] animate-spin-slow" />
             <span>Winter Special Care</span>
           </motion.div>
 
@@ -130,7 +130,7 @@ export function WinterBanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-3xl sm:text-4xl lg:text-4.5xl font-extrabold tracking-tight leading-tight text-white"
+            className="text-xl sm:text-3.5xl lg:text-4.5xl font-extrabold tracking-tight leading-snug text-white"
           >
             Winter is here — time to refresh your woolens & blankets
           </motion.h2>
@@ -141,7 +141,7 @@ export function WinterBanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.16 }}
-            className="mt-3.5 sm:mt-4 text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl"
+            className="mt-2 sm:mt-3 text-slate-300 text-xs sm:text-base leading-relaxed max-w-2xl"
           >
             Give your heavy blankets, quilts, and winter wardrobe a hygienic deep dry clean. 100% shrinkage protection, odor-free freshness, and complete dust-mite elimination.
           </motion.p>
@@ -152,12 +152,12 @@ export function WinterBanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.24 }}
-            className="mt-6 sm:mt-7 flex flex-wrap gap-2 sm:gap-2.5 items-center"
+            className="mt-4 sm:mt-6 flex flex-wrap gap-1.5 sm:gap-2.5 items-center"
           >
             {WINTER_ITEMS.map((item, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-white/95 bg-white/10 border border-white/15 backdrop-blur-sm shadow-xs hover:bg-white/20 hover:border-sky-300/40 transition-colors cursor-default"
+                className="inline-flex items-center px-2.5 py-1 rounded-lg sm:rounded-full text-[11px] sm:text-xs font-semibold text-white/95 bg-white/10 border border-white/15 backdrop-blur-sm shadow-xs"
               >
                 {item}
               </span>
@@ -170,17 +170,17 @@ export function WinterBanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.32 }}
-            className="mt-8 sm:mt-9"
+            className="mt-5 sm:mt-8"
           >
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-full font-bold text-sm sm:text-base text-white bg-[#38A8F5] hover:bg-[#1B96E6] active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg shadow-sky-500/25"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-3 min-h-[44px] sm:min-h-[48px] rounded-full font-bold text-xs sm:text-base text-white bg-[#38A8F5] hover:bg-[#1B96E6] active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg shadow-sky-500/25"
             >
               <MessageCircle className="w-4 h-4 fill-white/25 stroke-[2.2]" />
-              <span>Book Winter Cleaning on WhatsApp</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              <span>Book Winter Cleaning</span>
+              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </a>
           </motion.div>
         </div>

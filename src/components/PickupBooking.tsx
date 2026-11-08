@@ -243,7 +243,7 @@ export function PickupBooking() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="text-3.5xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
+              className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
             >
               Schedule a Doorstep Pickup
             </motion.h2>
@@ -254,7 +254,7 @@ export function PickupBooking() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: 0.16 }}
-              className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed"
+              className="mt-2.5 sm:mt-4 text-slate-600 text-xs sm:text-base lg:text-lg leading-relaxed"
             >
               No need to visit our store in person. Simply fill in your details, receive an instant booking reference code, and our team will collect your garments from your doorstep.
             </motion.p>
@@ -265,45 +265,45 @@ export function PickupBooking() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: 0.24 }}
-              className="mt-8 flex flex-col gap-4 w-full"
+              className="mt-4 sm:mt-8 flex flex-col gap-2.5 sm:gap-4 w-full"
             >
-              <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-slate-200/70 shadow-xs">
-                <div className="w-10 h-10 rounded-xl bg-[#EBF6FE] text-[#38A8F5] flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 stroke-[2.2]" />
+              <div className="flex items-start gap-2.5 sm:gap-3.5 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/70 shadow-xs">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#EBF6FE] text-[#38A8F5] flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2]" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#0B2540]">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B2540]">
                     Area Coverage
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5">
                     RK Colony, Subhash Nagar, Azad Nagar, and all surrounding areas in Bhilwara.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-slate-200/70 shadow-xs">
-                <div className="w-10 h-10 rounded-xl bg-[#EBF6FE] text-[#38A8F5] flex items-center justify-center shrink-0">
-                  <Clock className="w-5 h-5 stroke-[2.2]" />
+              <div className="flex items-start gap-2.5 sm:gap-3.5 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/70 shadow-xs">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#EBF6FE] text-[#38A8F5] flex items-center justify-center shrink-0">
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2]" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#0B2540]">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B2540]">
                     Same-Day Pickup
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5">
                     Book a morning slot and get doorstep collection the very same afternoon or evening.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-slate-200/70 shadow-xs">
-                <div className="w-10 h-10 rounded-xl bg-[#EBF6FE] text-[#38A8F5] flex items-center justify-center shrink-0">
-                  <Sparkles className="w-5 h-5 stroke-[2.2]" />
+              <div className="flex items-start gap-2.5 sm:gap-3.5 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/70 shadow-xs">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#EBF6FE] text-[#38A8F5] flex items-center justify-center shrink-0">
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2]" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#0B2540]">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B2540]">
                     Hygienic Protective Packaging
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5">
                     Every cleaned garment is delivered on a premium hanger with sealed dust-proof garment bags.
                   </p>
                 </div>
@@ -317,7 +317,7 @@ export function PickupBooking() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-7 w-full bg-white rounded-3xl p-6 sm:p-8 md:p-9 border border-slate-200/80 shadow-card relative"
+            className="lg:col-span-7 w-full bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-7 md:p-9 border border-slate-200/80 shadow-card relative"
           >
             {/* Success State Overlay */}
             <AnimatePresence>
@@ -434,12 +434,12 @@ export function PickupBooking() {
               {/* Field 1: Name & Phone in 2-col on desktop */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name */}
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1 sm:gap-1.5">
                   <label
                     htmlFor="pickup-name"
-                    className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
+                    className="text-[11px] sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                   >
-                    <User className="w-3.5 h-3.5 text-[#38A8F5]" />
+                    <User className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#38A8F5]" />
                     <span>Full Name</span>
                     <span className="text-red-500">*</span>
                   </label>
@@ -453,7 +453,7 @@ export function PickupBooking() {
                       if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
                     }}
                     onBlur={() => setTouched((prev) => ({ ...prev, name: true }))}
-                    className={`w-full h-12 rounded-xl border bg-slate-50/60 px-4 text-sm sm:text-base text-slate-800 placeholder:text-slate-400 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 ${
+                    className={`w-full h-10 sm:h-12 rounded-xl border bg-slate-50/60 px-3 sm:px-4 text-xs sm:text-base text-slate-800 placeholder:text-slate-400 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 ${
                       touched.name && errors.name
                         ? "border-red-400 ring-2 ring-red-100"
                         : "border-slate-200"
@@ -468,12 +468,12 @@ export function PickupBooking() {
                 </div>
 
                 {/* Phone */}
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1 sm:gap-1.5">
                   <label
                     htmlFor="pickup-phone"
-                    className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
+                    className="text-[11px] sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                   >
-                    <Phone className="w-3.5 h-3.5 text-[#38A8F5]" />
+                    <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#38A8F5]" />
                     <span>Mobile Number</span>
                     <span className="text-red-500">*</span>
                   </label>
@@ -487,7 +487,7 @@ export function PickupBooking() {
                       if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined }));
                     }}
                     onBlur={() => setTouched((prev) => ({ ...prev, phone: true }))}
-                    className={`w-full h-12 rounded-xl border bg-slate-50/60 px-4 text-sm sm:text-base text-slate-800 placeholder:text-slate-400 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 ${
+                    className={`w-full h-10 sm:h-12 rounded-xl border bg-slate-50/60 px-3 sm:px-4 text-xs sm:text-base text-slate-800 placeholder:text-slate-400 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 ${
                       touched.phone && errors.phone
                         ? "border-red-400 ring-2 ring-red-100"
                         : "border-slate-200"
@@ -503,12 +503,12 @@ export function PickupBooking() {
               </div>
 
               {/* Field 2: Service Selection */}
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-1 sm:gap-1.5">
                 <label
                   htmlFor="pickup-service"
-                  className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
+                  className="text-[11px] sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-[#38A8F5]" />
+                  <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#38A8F5]" />
                   <span>Select Service</span>
                   <span className="text-red-500">*</span>
                 </label>
@@ -517,7 +517,7 @@ export function PickupBooking() {
                     id="pickup-service"
                     value={service}
                     onChange={(e) => setService(e.target.value)}
-                    className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50/60 px-4 text-sm sm:text-base text-slate-800 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 appearance-none cursor-pointer"
+                    className="w-full h-10 sm:h-12 rounded-xl border border-slate-200 bg-slate-50/60 px-3 sm:px-4 text-xs sm:text-base text-slate-800 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 appearance-none cursor-pointer"
                   >
                     {siteConfig.services.map((s) => (
                       <option key={s.id} value={s.id}>
@@ -534,12 +534,12 @@ export function PickupBooking() {
               </div>
 
               {/* Field 3: Pickup Date Picker (min today, max 30 days) */}
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-1 sm:gap-1.5">
                 <label
                   htmlFor="pickup-date"
-                  className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
+                  className="text-[11px] sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                 >
-                  <Calendar className="w-3.5 h-3.5 text-[#38A8F5]" />
+                  <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#38A8F5]" />
                   <span>Pickup Date</span>
                   <span className="text-red-500">*</span>
                 </label>
@@ -555,7 +555,7 @@ export function PickupBooking() {
                       setErrors((prev) => ({ ...prev, pickupDate: undefined }));
                   }}
                   onBlur={() => setTouched((prev) => ({ ...prev, pickupDate: true }))}
-                  className={`w-full h-12 rounded-xl border bg-slate-50/60 px-4 text-sm sm:text-base text-slate-800 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 cursor-pointer ${
+                  className={`w-full h-10 sm:h-12 rounded-xl border bg-slate-50/60 px-3 sm:px-4 text-xs sm:text-base text-slate-800 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 cursor-pointer ${
                     touched.pickupDate && errors.pickupDate
                       ? "border-red-400 ring-2 ring-red-100"
                       : "border-slate-200"
@@ -570,9 +570,9 @@ export function PickupBooking() {
               </div>
 
               {/* Field 4: Pickup Time Slot Pills */}
-              <div className="flex flex-col gap-2">
-                <label className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#38A8F5]" />
+              <div className="flex flex-col gap-1.5 sm:gap-2">
+                <label className="text-[11px] sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5">
+                  <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#38A8F5]" />
                   <span>Pickup Time Slot</span>
                   <span className="text-red-500">*</span>
                 </label>
@@ -584,17 +584,17 @@ export function PickupBooking() {
                         key={slot.id}
                         type="button"
                         onClick={() => setPickupSlot(slot.id)}
-                        className={`h-12 px-1 rounded-xl flex flex-col items-center justify-center text-center transition-all duration-200 cursor-pointer border ${
+                        className={`h-10 sm:h-12 px-1 rounded-xl flex flex-col items-center justify-center text-center transition-all duration-200 cursor-pointer border ${
                           isSelected
-                            ? "bg-[#0B2540] text-white border-[#0B2540] shadow-sm scale-[1.02]"
+                            ? "bg-[#0B2540] text-white border-[#0B2540] shadow-xs scale-[1.02]"
                             : "bg-slate-50/60 text-slate-700 border-slate-200 hover:bg-slate-100"
                         }`}
                       >
-                        <span className="text-xs sm:text-sm font-bold leading-none">
+                        <span className="text-[11px] sm:text-sm font-bold leading-none">
                           {slot.label}
                         </span>
                         <span
-                          className={`text-[9.5px] sm:text-[11px] mt-1 leading-none tracking-tight ${
+                          className={`text-[9px] sm:text-[11px] mt-0.5 sm:mt-1 leading-none tracking-tight ${
                             isSelected ? "text-slate-300" : "text-slate-500"
                           }`}
                         >
@@ -607,12 +607,12 @@ export function PickupBooking() {
               </div>
 
               {/* Field 5: Address */}
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-1 sm:gap-1.5">
                 <label
                   htmlFor="pickup-address"
-                  className="text-xs sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
+                  className="text-[11px] sm:text-sm font-bold text-[#0B2540] flex items-center gap-1.5"
                 >
-                  <MapPin className="w-3.5 h-3.5 text-[#38A8F5]" />
+                  <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#38A8F5]" />
                   <span>Pickup Address & Landmark</span>
                   <span className="text-red-500">*</span>
                 </label>
@@ -627,7 +627,7 @@ export function PickupBooking() {
                       setErrors((prev) => ({ ...prev, address: undefined }));
                   }}
                   onBlur={() => setTouched((prev) => ({ ...prev, address: true }))}
-                  className={`w-full rounded-xl border bg-slate-50/60 p-3.5 text-sm sm:text-base text-slate-800 placeholder:text-slate-400 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 resize-none ${
+                  className={`w-full rounded-xl border bg-slate-50/60 p-2.5 sm:p-3.5 text-xs sm:text-base text-slate-800 placeholder:text-slate-400 outline-none transition-all duration-200 focus:bg-white focus:border-[#38A8F5] focus:ring-4 focus:ring-[#38A8F5]/15 resize-none ${
                     touched.address && errors.address
                       ? "border-red-400 ring-2 ring-red-100"
                       : "border-slate-200"
@@ -642,12 +642,12 @@ export function PickupBooking() {
               </div>
 
               {/* Live Message Preview */}
-              <div className="mt-1 flex flex-col gap-1.5">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+              <div className="mt-0.5 flex flex-col gap-1">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
                   <MessageCircle className="w-3 h-3 text-[#38A8F5]" />
                   <span>Live Booking Summary Preview</span>
                 </span>
-                <div className="p-3.5 rounded-2xl bg-[#EBF6FE]/70 border border-[#A5D8FB]/60 text-xs sm:text-sm text-slate-800 font-mono whitespace-pre-line break-words leading-relaxed shadow-xs overflow-hidden">
+                <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-[#EBF6FE]/70 border border-[#A5D8FB]/60 text-[11px] sm:text-xs text-slate-800 font-mono whitespace-pre-line break-words leading-relaxed shadow-xs overflow-hidden">
                   {composedMessage}
                 </div>
               </div>
@@ -656,7 +656,7 @@ export function PickupBooking() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-2 w-full min-h-[48px] rounded-full font-bold text-sm sm:text-base text-white bg-[#0B2540] hover:bg-[#163A5C] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer"
+                className="mt-2 w-full min-h-[44px] sm:min-h-[48px] rounded-full font-bold text-xs sm:text-base text-white bg-[#0B2540] hover:bg-[#163A5C] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer"
               >
                 {isSubmitting ? (
                   <>

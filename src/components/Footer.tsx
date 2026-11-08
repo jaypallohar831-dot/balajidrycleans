@@ -72,12 +72,12 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#0B2540] text-white rounded-t-[36px] sm:rounded-t-[44px] mt-12 pt-14 sm:pt-16 pb-24 sm:pb-14 relative overflow-hidden">
+    <footer className="w-full bg-[#0B2540] text-white rounded-t-[28px] sm:rounded-t-[44px] mt-8 sm:mt-12 pt-10 sm:pt-16 pb-24 sm:pb-14 relative overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-[#38A8F5]/10 blur-3xl pointer-events-none" />
 
       <div className="container-site">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-14 pb-8 sm:pb-12 border-b border-white/10">
           {/* Brand Info */}
           <div className="md:col-span-5 flex flex-col items-start">
             <a

@@ -53,13 +53,13 @@ export function Process() {
 
       <div className="container-site">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
           <motion.div
             initial={prefersReduced ? false : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.45 }}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#1278BF] bg-[#EBF6FE] rounded-full border border-[#D2ECFD] mb-3.5 shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#1278BF] bg-[#EBF6FE] rounded-full border border-[#D2ECFD] mb-2.5 sm:mb-3.5 shadow-xs"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#38A8F5]" />
             <span>How It Works</span>
@@ -70,7 +70,7 @@ export function Process() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-3.5xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
+            className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0B2540] tracking-tight leading-tight"
           >
             Simple 4-Step Process
           </motion.h2>
@@ -80,7 +80,7 @@ export function Process() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="mt-3.5 text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed"
+            className="mt-2.5 sm:mt-3.5 text-slate-600 text-xs sm:text-base lg:text-lg max-w-xl mx-auto leading-relaxed"
           >
             Simple, transparent, and completely hassle-free — your garments restored to perfection in 4 easy steps.
           </motion.p>
@@ -207,9 +207,9 @@ export function Process() {
         </div>
 
         {/* ── MOBILE / TABLET VERTICAL TIMELINE (Shown on < lg) ── */}
-        <div className="lg:hidden relative max-w-lg mx-auto pl-16 sm:pl-20">
+        <div className="lg:hidden relative max-w-lg mx-auto pl-11 sm:pl-16">
           {/* Base Track Vertical Line */}
-          <div className="absolute top-7 bottom-7 left-[26.5px] w-[3px] bg-slate-200/90 rounded-full z-0 overflow-hidden">
+          <div className="absolute top-5 bottom-5 left-[17px] sm:left-[26.5px] w-[2px] sm:w-[3px] bg-slate-200/90 rounded-full z-0 overflow-hidden">
             {/* Animated Vertical Line that draws itself downward */}
             <motion.div
               variants={verticalLineVariants}
@@ -222,7 +222,7 @@ export function Process() {
           </div>
 
           {/* 4 Steps Stack */}
-          <div className="flex flex-col gap-7 sm:gap-8 relative z-10">
+          <div className="flex flex-col gap-4 sm:gap-7 relative z-10">
             {siteConfig.process.map((step, idx) => {
               const IconComponent =
                 iconMap[step.icon as keyof typeof iconMap] || Sparkles;
@@ -241,7 +241,7 @@ export function Process() {
                   className="group relative flex items-start cursor-default"
                 >
                   {/* Numbered Circle sitting exactly on the vertical line */}
-                  <div className="absolute -left-16 sm:-left-20 top-2 sm:top-2.5">
+                  <div className="absolute -left-11 sm:-left-16 top-1.5 sm:top-2">
                     {/* Glowing pulse */}
                     <motion.div
                       initial={{ scale: 0.8, opacity: 0 }}
@@ -276,7 +276,7 @@ export function Process() {
                         delay: 0.2 + idx * 0.18,
                         duration: 0.45,
                       }}
-                      className="w-14 h-14 rounded-full border-3 flex items-center justify-center font-extrabold text-sm shadow-soft transition-transform duration-200 group-hover:scale-105"
+                      className="w-9 h-9 sm:w-13 sm:h-13 rounded-full border-2 sm:border-3 flex items-center justify-center font-extrabold text-xs sm:text-sm shadow-soft transition-transform duration-200 group-hover:scale-105"
                     >
                       <span className="font-black text-[#0B2540] group-hover:text-[#38A8F5] transition-colors">
                         0{step.step}
@@ -285,8 +285,8 @@ export function Process() {
                   </div>
 
                   {/* Card with subtle hover lift */}
-                  <div className="w-full p-5 sm:p-6 bg-white rounded-3xl border border-slate-200/80 shadow-soft hover:shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-[#A5D8FB]">
-                    <div className="flex items-center gap-3.5 mb-2.5">
+                  <div className="w-full p-3.5 sm:p-5 bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-soft hover:shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A5D8FB]">
+                    <div className="flex items-center gap-2.5 sm:gap-3.5 mb-1.5 sm:mb-2.5">
                       {/* Icon Container */}
                       <motion.div
                         initial={
@@ -306,17 +306,21 @@ export function Process() {
                           delay: 0.25 + idx * 0.18,
                           duration: 0.45,
                         }}
-                        className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 group-hover:bg-[#38A8F5] group-hover:text-white"
+                        className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-200 group-hover:bg-[#38A8F5] group-hover:text-white shrink-0"
                       >
-                        <IconComponent className="w-5 h-5 stroke-[2.2]" />
+                        <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2]" />
                       </motion.div>
 
-                      <h3 className="text-base sm:text-lg font-bold text-[#0B2540] group-hover:text-[#1278BF] transition-colors">
-                        {step.title}
-                      </h3>
+                      <span className="text-[10px] sm:text-xs font-bold text-[#1278BF] uppercase tracking-wider">
+                        Step 0{step.step}
+                      </span>
                     </div>
 
-                    <p className="text-sm text-slate-600 leading-relaxed pl-0.5">
+                    <h3 className="text-sm sm:text-lg font-bold text-[#0B2540] group-hover:text-[#1278BF] transition-colors">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-1 sm:mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
