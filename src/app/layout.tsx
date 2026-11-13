@@ -264,7 +264,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${jakarta.variable} h-full antialiased scroll-smooth`}>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className={`${jakarta.variable} h-full antialiased scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"

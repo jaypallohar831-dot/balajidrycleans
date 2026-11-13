@@ -159,32 +159,68 @@ function writeLocalWorks(items: WorkItem[]): void {
   }
 }
 
+// In-memory cache for fast sub-millisecond public response
+let cachedWorks: WorkItem[] | null = null;
+let lastCacheTime = 0;
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds
+
+export function invalidateWorksCache(): void {
+  cachedWorks = null;
+  lastCacheTime = 0;
+}
+
 /**
- * Fetch public active works
+ * Fetch public active works (cached + timeout safe)
  */
 export async function getPublicWorks(): Promise<WorkItem[]> {
+  const now = Date.now();
+  if (cachedWorks && now - lastCacheTime < CACHE_TTL_MS) {
+    return cachedWorks;
+  }
+
   if (isMockMode()) {
     const items = readLocalWorks();
-    return items
+    const result = items
       .filter((w) => w.is_active)
       .sort((a, b) => a.display_order - b.display_order);
+    cachedWorks = result;
+    lastCacheTime = now;
+    return result;
   }
 
   try {
     const db = getServiceClient();
-    const { data, error } = await db
+
+    // 2.5s race timeout so cold/sleeping database never blocks the client
+    const queryPromise = db
       .from("works")
       .select("*")
       .eq("is_active", true)
       .order("display_order", { ascending: true });
 
+    const timeoutPromise = new Promise<{ data: null; error: Error }>((resolve) =>
+      setTimeout(() => resolve({ data: null, error: new Error("Supabase query timeout") }), 2500)
+    );
+
+    const { data, error } = (await Promise.race([queryPromise, timeoutPromise])) as any;
+
     if (error || !data || data.length === 0) {
-      return readLocalWorks().filter((w) => w.is_active);
+      const fallback = readLocalWorks().filter((w) => w.is_active);
+      cachedWorks = fallback;
+      lastCacheTime = now;
+      return fallback;
     }
-    return data.map((d) => ({ ...d, tags: d.tags || [] }));
+
+    const formatted = data.map((d: any) => ({ ...d, tags: d.tags || [] }));
+    cachedWorks = formatted;
+    lastCacheTime = now;
+    return formatted;
   } catch (err) {
     console.error("[WorksStore:getPublicWorks]", err);
-    return readLocalWorks().filter((w) => w.is_active);
+    const fallback = readLocalWorks().filter((w) => w.is_active);
+    cachedWorks = fallback;
+    lastCacheTime = now;
+    return fallback;
   }
 }
 
@@ -218,6 +254,7 @@ export async function getAllWorksForAdmin(): Promise<WorkItem[]> {
  * Create a new work item
  */
 export async function createWorkItem(item: Omit<WorkItem, "id" | "created_at">): Promise<WorkItem> {
+  invalidateWorksCache();
   const newId = `work-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
   const now = new Date().toISOString();
 
@@ -279,6 +316,7 @@ export async function updateWorkItem(
   id: string,
   updates: Partial<Omit<WorkItem, "id" | "created_at">>
 ): Promise<WorkItem | null> {
+  invalidateWorksCache();
   const now = new Date().toISOString();
 
   if (isMockMode()) {
@@ -327,6 +365,7 @@ export async function updateWorkItem(
  * Delete a work item
  */
 export async function deleteWorkItem(id: string): Promise<boolean> {
+  invalidateWorksCache();
   if (isMockMode()) {
     const items = readLocalWorks();
     const filtered = items.filter((w) => w.id !== id);
