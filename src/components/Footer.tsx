@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Droplet, MapPin, MessageCircle } from "lucide-react";
+import { MapPin, MessageCircle } from "lucide-react";
 import { siteConfig, getWhatsAppLink } from "@/config/site";
 
 function InstagramIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -85,8 +86,14 @@ export function Footer() {
               onClick={(e) => handleScrollTo(e, "#home")}
               className="flex items-center gap-2.5 group"
             >
-              <div className="w-9 h-9 rounded-full bg-[#EBF6FE] flex items-center justify-center text-[#38A8F5] group-hover:scale-105 transition-transform duration-200 shadow-sm">
-                <Droplet className="w-4.5 h-4.5 fill-[#38A8F5]/30 stroke-[2.2]" />
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-0.5 shadow-sm group-hover:scale-105 transition-transform duration-200 shrink-0 overflow-hidden">
+                <Image
+                  src="/logo.png"
+                  alt="Balaji Dry Cleans"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain rounded-full"
+                />
               </div>
               <span className="font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-[#6EC0F8] transition-colors">
                 {siteConfig.name}

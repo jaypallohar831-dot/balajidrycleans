@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ShieldCheck, Mail, ArrowRight, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Mail, ArrowRight, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -74,8 +75,15 @@ export default function AdminLoginPage() {
         <div className="absolute top-0 right-0 w-36 h-36 bg-[#38A8F5]/15 rounded-full blur-2xl pointer-events-none" />
 
         <div className="text-center mb-6">
-          <div className="w-14 h-14 rounded-2xl bg-[#EBF6FE] text-[#1278BF] flex items-center justify-center mx-auto mb-3.5 shadow-xs">
-            <ShieldCheck className="w-7 h-7 stroke-[2.2]" />
+          <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-3.5 shadow-md p-1 border border-slate-100 overflow-hidden">
+            <Image
+              src="/logo.png"
+              alt="Balaji Dry Cleans"
+              width={64}
+              height={64}
+              className="w-full h-full object-contain rounded-full"
+              priority
+            />
           </div>
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#1278BF] bg-[#EBF6FE] px-3 py-1 rounded-full border border-[#D2ECFD]">
             Private Admin Area

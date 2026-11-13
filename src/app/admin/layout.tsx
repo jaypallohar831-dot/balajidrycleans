@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   LayoutDashboard,
   CalendarCheck,
@@ -49,8 +50,14 @@ export default function AdminLayout({
         <div>
           {/* Logo */}
           <div className="flex items-center gap-3 px-2 py-3 mb-6 border-b border-white/10">
-            <div className="w-10 h-10 rounded-xl bg-[#38A8F5] text-[#0B2540] flex items-center justify-center font-black text-lg shadow-sm">
-              B
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-0.5 overflow-hidden shadow-sm shrink-0 border border-white/20">
+              <Image
+                src="/logo.png"
+                alt="Balaji Logo"
+                width={40}
+                height={40}
+                className="w-full h-full object-contain rounded-full"
+              />
             </div>
             <div>
               <h2 className="font-bold text-sm tracking-wide text-white">BALAJI ADMIN</h2>
@@ -124,8 +131,14 @@ export default function AdminLayout({
       {/* ── MOBILE TOP BAR ── */}
       <header className="md:hidden bg-[#0B2540] text-white px-4 py-3 flex items-center justify-between sticky top-0 z-40 border-b border-[#163A5C] shadow-sm">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#38A8F5] text-[#0B2540] flex items-center justify-center font-black text-sm">
-            B
+          <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center p-0.5 overflow-hidden shadow-sm shrink-0">
+            <Image
+              src="/logo.png"
+              alt="Balaji Logo"
+              width={32}
+              height={32}
+              className="w-full h-full object-contain rounded-full"
+            />
           </div>
           <span className="font-bold text-sm tracking-wide">Balaji Admin</span>
         </div>

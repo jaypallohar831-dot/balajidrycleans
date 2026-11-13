@@ -49,10 +49,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/logo.png", type: "image/png" },
       { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/icon.svg" }],
+    apple: [{ url: "/logo.png" }],
   },
   openGraph: {
     title: "Balaji Dry Cleaners — Premium Dry Cleaning in Bhilwara",
@@ -119,7 +120,7 @@ const structuredDataSchema = {
       ],
       description: siteConfig.description,
       image: `${baseUrl}/og-image.jpg`,
-      logo: `${baseUrl}/icon.svg`,
+      logo: `${baseUrl}/logo.png`,
       telephone: `+${siteConfig.whatsapp}`,
       url: baseUrl,
       sameAs: [

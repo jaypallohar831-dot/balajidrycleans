@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
@@ -538,9 +539,15 @@ export function Contact() {
 
             {/* Floating Glassmorphic Store Badge on the Map (hidden on small screens to prevent covering the map) */}
             <div className="hidden sm:block absolute top-4 left-4 max-w-[280px] sm:max-w-xs bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-200/90 shadow-elevated pointer-events-auto">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-[#EBF6FE] text-[#1278BF] flex items-center justify-center font-bold text-xs">
-                  BDC
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center p-0.5 overflow-hidden shadow-xs shrink-0 border border-slate-100">
+                  <Image
+                    src="/logo.png"
+                    alt="Balaji Logo"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-contain rounded-full"
+                  />
                 </div>
                 <div>
                   <h4 className="text-xs sm:text-sm font-bold text-[#0B2540] leading-none">

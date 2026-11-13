@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Droplet, Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { siteConfig, getWhatsAppLink } from "@/config/site";
 
 const NAV_ITEMS = [
@@ -132,8 +133,15 @@ export function Navbar() {
           onClick={(e) => handleNavClick(e, "#home")}
           className="group flex items-center gap-2 sm:gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#38A8F5] rounded-full px-1 py-1 min-h-[44px]"
         >
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#EBF6FE] flex items-center justify-center text-[#38A8F5] group-hover:scale-105 transition-transform duration-200 shadow-sm shrink-0">
-            <Droplet className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-[#38A8F5]/30 stroke-[2.2]" />
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white flex items-center justify-center p-0.5 shadow-sm group-hover:scale-105 transition-transform duration-200 shrink-0 border border-slate-100">
+            <Image
+              src="/logo.png"
+              alt="Balaji Dry Cleans"
+              width={36}
+              height={36}
+              className="w-full h-full object-contain rounded-full"
+              priority
+            />
           </div>
           <span className="font-bold text-sm sm:text-base tracking-tight text-[#0B2540] group-hover:text-[#38A8F5] transition-colors whitespace-nowrap">
             {siteConfig.name}
